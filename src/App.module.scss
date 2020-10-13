@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 1170px;
+  margin: 0 auto;
+}
+
+.container {
+  @media all and (max-width: 1199px){
+    width: 960px;
+  }
+}
+
+.container {
+  @media all and (max-width: 991px){
+    width: 750px;
+  }
+}
+
+.container {
+  @media all and (max-width: 768px){
+    width: 100%;
+    padding: 0 30px;
+  }
+}
