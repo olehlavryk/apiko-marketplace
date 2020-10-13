@@ -1,14 +1,54 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin-top: 18px;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   .left {
 
   }
 
   .right {
+    display: flex;
+    align-items: center;
+
+    & > a {
+      margin: 0 7px;
+    }
+    .primary_link {
+      background: #349A89;
+      border-radius: 4px;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      padding: 7px 45px;
+      text-decoration: none;
+      transition: all 300ms ease-in-out;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    .outline_link {
+      background: transparent;
+      border-radius: 4px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #2B2B2B;
+      text-decoration: none;
+      transition: all 300ms ease-in-out;
+      padding: 7px 30px;
+      border: 1px solid transparent;
+
+      &:hover {
+        border: 1px solid #349A89;
+      }
+    }
 
   }
 }
-
