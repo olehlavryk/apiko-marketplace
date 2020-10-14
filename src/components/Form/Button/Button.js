@@ -1,6 +1,6 @@
 import React from "react";
 import T from 'prop-types';
-import s from './Button.module.scss'
+import './Button.module.scss'
 
 export const Button = ({children, ...props}) => {
   return(
