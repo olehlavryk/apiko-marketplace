@@ -3,7 +3,7 @@ import Router from './scenes/routes';
 
 function App() {
   return (
-    <main>
+    <main >
       <Router />
     </main>
   );
