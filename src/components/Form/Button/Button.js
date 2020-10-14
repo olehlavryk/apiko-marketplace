@@ -4,7 +4,7 @@ import s from './Button.module.scss'
 
 export const Button = ({children, ...props}) => {
   return(
-    <button className={s.formButton} {...props}>
+    <button {...props}>
       {children}
     </button>
   );

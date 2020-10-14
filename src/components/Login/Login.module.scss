@@ -35,14 +35,13 @@
       margin-bottom: 20px;
       transition: all 300ms ease-in-out;
 
-
       &:hover {
         color: #000;
       }
     }
   }
 
-  .registerBox {
+  .auth_box {
     width: 425px;
     margin: 21px auto 50px auto;
     background: #FFFFFF;
@@ -55,16 +54,15 @@
     letter-spacing: 0.4px;
     color: #2A2A2A;
 
-  }
+    .auth_box_link {
+      text-transform: uppercase;
+      color: #349A89;
+      text-decoration: none;
+      transition: all 300ms ease-in-out;
 
-  .registerLink {
-    text-transform: uppercase;
-    color: #349A89;
-    text-decoration: none;
-    transition: all 300ms ease-in-out;
-
-    &:hover {
-      color: #000;
+      &:hover {
+        color: #000;
+      }
     }
   }
 }

@@ -31,6 +31,7 @@ export const Login = () => {
               <div className={s.form_row}>
                 <Label htmlFor="userEmail">Email</Label>
                 <TextInput
+                  type="email"
                   value={email}
                   name="userEmail"
                   id="userEmail"
@@ -49,8 +50,8 @@ export const Login = () => {
             </form>
           </div>
           {/* Register Box */}
-          <div className={s.registerBox}>
-            I have no account, <Link className={s.registerLink} to={routes.register}>REGISTER NOW</Link>
+          <div className={s.auth_box}>
+            I have no account, <Link className={s.auth_box_link} to={routes.register}>REGISTER NOW</Link>
           </div>
         </div>
       </div>

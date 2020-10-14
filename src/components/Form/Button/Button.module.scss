@@ -1,4 +1,4 @@
-.formButton {
+button {
   font-size: 16px;
   line-height: 18px;
   text-align: center;
@@ -11,12 +11,12 @@
   width: 100%;
   transition: all 300ms ease-in-out;
   cursor: pointer;
-}
 
-.formButton:disabled {
-  cursor: not-allowed;
-}
+  &:hover {
+    opacity: 0.9;
+  }
 
-.formButton:hover {
-  opacity: 0.9;
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
