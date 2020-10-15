@@ -67,8 +67,8 @@ export const RegisterForm = () => {
             />
             {errors.email && touched.email ? (
               <span className={s.errors_small}>
-                      {errors.email && touched.email && errors.email}
-                    </span>
+                {errors.email && touched.email && errors.email}
+              </span>
             ) : null}
           </div>
           <div className={s.form_row}>
@@ -82,8 +82,8 @@ export const RegisterForm = () => {
             />
             {errors.fullName && touched.fullName ? (
               <span className={s.errors_small}>
-                      {errors.fullName && touched.fullName && errors.fullName}
-                    </span>
+                {errors.fullName && touched.fullName && errors.fullName}
+              </span>
             ) : null}
           </div>
           <div className={s.form_row}>
