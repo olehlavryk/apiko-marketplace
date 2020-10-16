@@ -17,8 +17,11 @@ export const Register = () => {
 
         {/* Register Box */}
         <div className={s.auth_box}>
-          I already have an account,
-          <Link className={s.auth_box_link} to={routes.login}>LOG IN</Link>
+          I already have an account,{' '}
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <Link className={s.auth_box_link} to={routes.login}>
+            LOG IN
+          </Link>
         </div>
       </div>
     </div>

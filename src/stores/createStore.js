@@ -1,9 +1,8 @@
 import { createContext, useContext } from 'react';
 import { RootStore } from 'src/stores/RootStore';
 
-
 export function createStore() {
-  const root = RootStore.create({});
+  const root = RootStore.create();
 
   return root;
 }

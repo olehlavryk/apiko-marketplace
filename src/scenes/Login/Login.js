@@ -17,7 +17,8 @@ export const Login = () => {
           </div>
           {/* Register Box */}
           <div className={s.auth_box}>
-            I have no account,
+            I have no account,{' '}
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <Link className={s.auth_box_link} to={routes.register}>
               REGISTER NOW
             </Link>

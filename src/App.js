@@ -2,7 +2,7 @@ import React from 'react';
 import Router from './scenes/routes';
 import { createStore, Provider } from './stores/createStore';
 
-const store = createStore(); // just remove instance
+const store = createStore();
 
 function App() {
   return (
