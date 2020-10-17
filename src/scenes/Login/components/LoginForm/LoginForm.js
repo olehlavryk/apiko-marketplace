@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { Link, useHistory } from 'react-router-dom';
@@ -14,21 +14,7 @@ export const LoginForm = () => {
   const store = useStore();
   const history = useHistory();
 
-  async function onSubmit(values) {
-    const { email, password } = values;
-
-    // todo if false error in login form else redirect
-
-    try {
-      await store.auth.login.run({ email, password });
-    } catch (err) {
-      console.log('error!!!');
-    }
-
-
-
-    history.push(routes.home);
-  }
+  const [loginError, setLoginError] = useState(false);
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -45,9 +31,16 @@ export const LoginForm = () => {
     <Formik
       initialValues={{ email: '', password: '' }}
       validationSchema={LoginSchema}
-      onSubmit={(values) => {
-        // send login form
-        onSubmit(values);
+      onSubmit={async (values, { resetForm }) => {
+        const { email, password } = values;
+        console.log(values);
+        try {
+          await store.auth.login.run({ email, password });
+          history.push(routes.home);
+        } catch (err) {
+          setLoginError(true);
+          resetForm({ values: '' });
+        }
       }}
     >
       {({
@@ -97,6 +90,13 @@ export const LoginForm = () => {
               </span>
             ) : null}
           </div>
+
+          {loginError ? (
+            <span className={s.errors_small}>
+              Wrong login or password! Please try again!
+            </span>
+          ) : null}
+
           <div className={s.form_row}>
             <Button
               disabled={isSubmitting}

@@ -45,7 +45,7 @@ const UserInfo = observer(() => {
               <Link to={routes.profile}>Edit Profile</Link>
             </li>
             <li>
-              <Link to={routes.profile} onClick={store.auth.logout}>
+              <Link to="#" onClick={store.auth.logout}>
                 Logout
               </Link>
             </li>
@@ -95,7 +95,7 @@ export const Header = observer(() => {
 
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <Link to={routes.home}>
-            <Icon name="like" />
+            <Icon name={store.auth.isLoggedIn ? 'like_white': 'like'} />
           </Link>
         </div>
       </div>
