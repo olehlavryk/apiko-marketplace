@@ -8,6 +8,14 @@ export const Auth = {
 
   setToken(token) {
     this._token = token;
+    localStorage.setItem('__token', token);
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+
+  logout() {
+    this._token = null;
+    localStorage.removeItem('__token');
+    axios.defaults.headers.common.Authorization = `undefined`;
   },
 
   isLoggedIn() {
@@ -26,5 +34,11 @@ export const Auth = {
       password,
       fullName,
     });
+  },
+};
+
+export const Account = {
+  getUser() {
+    return axios.get('/api/account');
   },
 };

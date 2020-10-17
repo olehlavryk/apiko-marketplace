@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { Link } from 'react-router-dom';
-import Api from 'src/api/index';
+import { Link, useHistory } from 'react-router-dom';
+import { useStore } from 'src/stores/createStore';
 import { Label } from 'src/components/Form/Label/Label';
 import { TextInput } from 'src/components/Form/TextInput/TextInput';
 import { PasswordInput } from 'src/components/Form/PasswordInput/PasswordInput';
@@ -11,13 +11,23 @@ import { Button } from 'src/components/Form/Button/Button';
 import s from './LoginForm.module.scss';
 
 export const LoginForm = () => {
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
+  const store = useStore();
+  const history = useHistory();
 
-  async function onSubmit({ email, password }) {
-    const res = await Api.Auth.login({ email, password });
+  async function onSubmit(values) {
+    const { email, password } = values;
 
-    console.log(res.data);
+    // todo if false error in login form else redirect
+
+    try {
+      await store.auth.login.run({ email, password });
+    } catch (err) {
+      console.log('error!!!');
+    }
+
+
+
+    history.push(routes.home);
   }
 
   const LoginSchema = Yup.object().shape({
@@ -35,15 +45,9 @@ export const LoginForm = () => {
     <Formik
       initialValues={{ email: '', password: '' }}
       validationSchema={LoginSchema}
-      onSubmit={(values, { setSubmitting }) => {
-        // setTimeout(() => {
-        //   alert(JSON.stringify(values, null, 2));
-        //   setSubmitting(false);
-        // }, 400);
-        console.log(values);
+      onSubmit={(values) => {
+        // send login form
         onSubmit(values);
-        setSubmitting(false);
-
       }}
     >
       {({
@@ -81,18 +85,25 @@ export const LoginForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <Link className={s.resetPasswordLink} to={routes.reset}>
               Don’t remember password?
             </Link>
             {errors.password && touched.password ? (
               <span className={s.errors_small}>
-                {errors.password && touched.password && errors.password}
+                {errors.password &&
+                  touched.password &&
+                  errors.password}
               </span>
             ) : null}
           </div>
           <div className={s.form_row}>
-            <Button disabled={isSubmitting} className={s.login_btn}>
-              Continue
+            <Button
+              disabled={isSubmitting}
+              type="submit"
+              className={s.login_btn}
+            >
+              {isSubmitting ? 'Loading...' : 'Continue'}
             </Button>
           </div>
         </form>

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { observer } from 'mobx-react';
 import s from './Login.module.scss';
 import { routes } from '../routes';
 import { Text } from '../../components/Text/Text';
 import { LoginForm } from './components/LoginForm/LoginForm';
 
-export const Login = () => {
+export const Login = observer(() => {
   return (
     <>
       <div className={s.login_scene}>
@@ -27,4 +28,4 @@ export const Login = () => {
       </div>
     </>
   );
-};
+});
