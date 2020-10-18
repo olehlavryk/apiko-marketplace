@@ -1,7 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { observer } from 'mobx-react';
 import { Auth } from './Auth/Auth';
 import { Footer } from '../components/Footer/Footer';
+import { useStore } from '../stores/createStore';
 
 export const routes = {
   home: '/',
@@ -12,6 +14,24 @@ export const routes = {
   profile: '/user/profile',
 };
 
+export const PrivateRoute = observer(({ component, props }) => {
+  const store = useStore();
+
+  return (
+    <Route
+      {...props}
+      render={(...renderProps) => {
+        // eslint-disable-next-line no-unused-expressions
+        store.auth.isLoggedIn ? (
+          <component {...renderProps} />
+        ) : (
+          <Redirect to={routes.home} />
+        );
+      }}
+    />
+  );
+});
+
 export default function Router() {
   return (
     <BrowserRouter>
@@ -21,7 +41,7 @@ export default function Router() {
           path={routes.home}
           component={() => <div>Home scene</div>}
         />
-        <Route path={routes.auth} component={Auth} />
+        <PrivateRoute path={routes.auth} component={Auth} />
       </Switch>
       <Footer>Copyright © 2017. Privacy Policy.</Footer>
     </BrowserRouter>

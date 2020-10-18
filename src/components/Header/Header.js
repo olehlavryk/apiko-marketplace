@@ -17,15 +17,14 @@ const UserInfo = observer(() => {
   };
 
   return (
-    <div
-      className={s.user_info}
-      onClick={(e) => toggleClick(e)}
-    >
-
+    <div className={s.user_info} onClick={toggleClick}>
       {state.open && (
-        <div className={s.user_info_dropdown} onClick={(e) => e.stopPropagation()}>
+        <div
+          className={s.user_info_dropdown}
+          onClick={(e) => e.stopPropagation()}
+        >
           <div className={s.user_details_box}>
-            <div className={s.user_avatar}></div>
+            <div className={s.user_avatar} />
 
             <div className={s.user_profile}>
               <div className={s.user_name}>
@@ -95,7 +94,9 @@ export const Header = observer(() => {
 
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <Link to={routes.home}>
-            <Icon name={store.auth.isLoggedIn ? 'like_white': 'like'} />
+            <Icon
+              name={store.auth.isLoggedIn ? 'like_white' : 'like'}
+            />
           </Link>
         </div>
       </div>

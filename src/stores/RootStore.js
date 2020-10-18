@@ -15,6 +15,8 @@ export const RootStore = types
         const token = localStorage.getItem('__token');
 
         if (!token) {
+          // todo add logout and remove all data from localstorege
+          //store.auth.setIsLoggedIn(true);
           return;
         }
 
@@ -24,9 +26,8 @@ export const RootStore = types
 
         store.viewer.setViewer(res.data);
         store.auth.setIsLoggedIn(true);
-        console.log(store.auth.isLoggedIn);
       } catch (err) {
-        console.log(err);
+        // todo add logout and remove all data from localstorege
       }
     },
   }));
