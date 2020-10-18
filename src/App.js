@@ -5,17 +5,17 @@ import { createStore, Provider } from './stores/createStore';
 const store = createStore();
 
 function App() {
-  // const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     store.bootstrap().then(() => {
-      // setLoading(false);
+      setLoading(false);
     });
   }, []);
 
-  // if (isLoading) {
-  //   return <div>Loading ...</div>;
-  // }
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
 
   return (
     <main>
@@ -26,4 +26,4 @@ function App() {
   );
 }
 
-export default App;
+export default  App;

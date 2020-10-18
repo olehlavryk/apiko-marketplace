@@ -1,9 +1,15 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { Auth } from './Auth/Auth';
 import { Footer } from '../components/Footer/Footer';
 import { useStore } from '../stores/createStore';
+import { Home } from './Home/Home';
 
 export const routes = {
   home: '/',
@@ -14,33 +20,30 @@ export const routes = {
   profile: '/user/profile',
 };
 
-export const PrivateRoute = observer(({ component, props }) => {
-  const store = useStore();
+export const PrivateRoute = observer(
+  ({ component: Component, ...props }) => {
+    const store = useStore();
 
-  return (
-    <Route
-      {...props}
-      render={(...renderProps) => {
-        // eslint-disable-next-line no-unused-expressions
-        store.auth.isLoggedIn ? (
-          <component {...renderProps} />
-        ) : (
-          <Redirect to={routes.home} />
-        );
-      }}
-    />
-  );
-});
+    return (
+      <Route
+        {...props}
+        render={(...renderProps) =>
+          store.auth.isLoggedIn ? (
+            <Redirect to={routes.home} />
+          ) : (
+            <Component {...renderProps} />
+          )
+        }
+      />
+    );
+  },
+);
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route
-          exact
-          path={routes.home}
-          component={() => <div>Home scene</div>}
-        />
+        <Route exact path={routes.home} component={Home} />
         <PrivateRoute path={routes.auth} component={Auth} />
       </Switch>
       <Footer>Copyright © 2017. Privacy Policy.</Footer>

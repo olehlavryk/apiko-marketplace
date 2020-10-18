@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import { useStore } from 'src/stores/createStore';
 import { Label } from 'src/components/Form/Label/Label';
 import { TextInput } from 'src/components/Form/TextInput/TextInput';

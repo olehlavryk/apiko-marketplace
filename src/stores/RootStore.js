@@ -16,7 +16,7 @@ export const RootStore = types
 
         if (!token) {
           // todo add logout and remove all data from localstorege
-          //store.auth.setIsLoggedIn(true);
+          //store.auth.setIsLoggedIn(false);
           return;
         }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import s from './Header.module.scss';
@@ -51,19 +51,14 @@ const UserInfo = observer(() => {
           </ul>
         </div>
       )}
-
-      {/* <button type="button" onClick={store.auth.logout}> */}
-      {/*  Logout */}
-      {/* </button> */}
     </div>
   );
 });
 
 export const Header = observer(() => {
-  const history = useHistory();
   const store = useStore();
 
-  const completedClass = store.auth.isLoggedIn ? s.header_auth : '';
+  const completedClass = store.auth.isLoggedIn ? s.header_auth : null;
 
   return (
     <header className={`${s.header} ${completedClass}`}>
