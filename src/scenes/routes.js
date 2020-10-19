@@ -9,7 +9,7 @@ import { observer } from 'mobx-react';
 import { Auth } from './Auth/Auth';
 import { Footer } from '../components/Footer/Footer';
 import { useStore } from '../stores/createStore';
-import { Home } from './Home/Home';
+import { Main } from './Main/Main';
 
 export const routes = {
   home: '/',
@@ -18,6 +18,7 @@ export const routes = {
   register: '/auth/register',
   reset: '/auth/reset',
   profile: '/user/profile',
+  products: '/products/:productId',
 };
 
 export const PrivateRoute = observer(
@@ -43,8 +44,8 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path={routes.home} component={Home} />
         <PrivateRoute path={routes.auth} component={Auth} />
+        <Route component={Main} />
       </Switch>
       <Footer>Copyright © 2017. Privacy Policy.</Footer>
     </BrowserRouter>
