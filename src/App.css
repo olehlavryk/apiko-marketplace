@@ -8,6 +8,10 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
+ul {
+  list-style: none;
+}
+
 .container {
   width: 1170px;
   margin: 0 auto;
