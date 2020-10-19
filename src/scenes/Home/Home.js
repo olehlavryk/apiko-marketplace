@@ -18,7 +18,6 @@ export const Home = observer(() => {
 
   return (
     <>
-      <Header />
       <main className={s.home_scene}>
         <div className="container">
           <FilterBar />

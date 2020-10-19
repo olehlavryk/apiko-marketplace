@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { generatePath, Link, NavLink } from 'react-router-dom';
 import s from './Product.module.scss';
 import { Icon } from '../Icons/Icon';
+import { routes } from '../../scenes/routes';
 
 export const Product = (props) => {
   const { item } = props;
@@ -13,7 +14,9 @@ export const Product = (props) => {
 
   return (
     <div className={s.product}>
-      <Link to="#">
+      <NavLink
+        to={generatePath(routes.product, { productId: item.id })}
+      >
         {item.photos[0] ? (
           <img
             src={item.photos[0]}
@@ -28,11 +31,10 @@ export const Product = (props) => {
             className={s.product_preview}
           />
         )}
-      </Link>
+      </NavLink>
       <div className={s.product_info}>
         <Link to="#" className={s.product_title}>
-          {item.title.charAt(0).toUpperCase()
-          + item.title.slice(1)}
+          {item.title.charAt(0).toUpperCase() + item.title.slice(1)}
         </Link>
         <div className={s.product_price}>${item.price}</div>
         <Link to="#" className={s.product_like_wrap}>

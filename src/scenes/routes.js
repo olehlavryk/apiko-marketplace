@@ -18,7 +18,7 @@ export const routes = {
   register: '/auth/register',
   reset: '/auth/reset',
   profile: '/user/profile',
-  products: '/products/:productId',
+  product: '/products/:productId',
 };
 
 export const PrivateRoute = observer(
