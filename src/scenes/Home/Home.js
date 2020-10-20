@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
-import { Header } from '../../components/Header/Header';
 import s from './Home.module.scss';
 import { useStore } from '../../stores/createStore';
 import { FilterBar } from '../../components/FilterBar/FilterBar';

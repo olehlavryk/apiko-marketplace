@@ -1,11 +1,11 @@
 import { getParent, types } from 'mobx-state-tree';
+import Api from 'src/api';
 import { ProductModel } from './ProductModel';
 import { asyncModel } from '../utils';
-import Api from 'src/api';
 
 export const LatestProductsStore = types
   .model('LatestProductsStore', {
-    items: types.array(ProductModel),
+    items: types.array(types.reference(ProductModel)),
     fetchLatest: asyncModel(fetchLatest),
     inProgress: true,
   })
@@ -19,10 +19,15 @@ export const LatestProductsStore = types
   }));
 
 function fetchLatest() {
-  return async function fetchLatestFlow(flow, store) {
+  return async function fetchLatestFlow(flow, store, Root) {
     const res = await Api.Products.fetchLatest();
 
-    store.setItems(res.data);
+    const ids = res.data.map((item) => {
+      Root.entities.products.add(item.id, item);
+      return item.id;
+    });
+
+    store.setItems(ids);
     store.setProgressDone();
   };
 }

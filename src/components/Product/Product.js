@@ -33,17 +33,20 @@ export const Product = (props) => {
         )}
       </NavLink>
       <div className={s.product_info}>
-        <Link to="#" className={s.product_title}>
+        <Link
+          to={generatePath(routes.product, { productId: item.id })}
+          className={s.product_title}
+        >
           {item.title.charAt(0).toUpperCase() + item.title.slice(1)}
         </Link>
         <div className={s.product_price}>${item.price}</div>
-        <Link to="#" className={s.product_like_wrap}>
+        <div className={s.product_like_wrap}>
           {item.save ? (
             <Icon name="like" className="product_like" />
           ) : (
             <Icon name="like_green" className="product_like" />
           )}
-        </Link>
+        </div>
       </div>
     </div>
   );

@@ -99,17 +99,19 @@
         }
 
         .user_profile {
-          margin-left: 12px;
+          width: 120px;
+          margin-left: 11px;
+          word-break: break-all;
 
           .user_name {
-            font-size: 10px;
+            font-size: 12px;
             line-height: 14px;
             letter-spacing: 1px;
             color: #000;
           }
 
           .user_email {
-            font-size: 10px;
+            font-size: 11px;
             line-height: 14px;
             letter-spacing: 1px;
             color: #979797

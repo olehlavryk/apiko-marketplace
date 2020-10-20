@@ -3,12 +3,15 @@ import Api from 'src/api';
 import { AuthStore } from './Auth/AuthStore';
 import { ViewerStore } from './ViewerStore';
 import { LatestProductsStore } from './Products/LatestProductsStore';
+import { EntitiesStore } from './EntitesStore';
 
 export const RootStore = types
   .model('RootStore', {
     auth: types.optional(AuthStore, {}),
     viewer: types.optional(ViewerStore, {}),
     latestProducts: types.optional(LatestProductsStore, {}),
+
+    entities: types.optional(EntitiesStore, {}),
   })
   .actions((store) => ({
     async bootstrap() {
@@ -18,7 +21,7 @@ export const RootStore = types
 
         if (!token) {
           // todo add logout and remove all data from localstorege
-          //store.auth.setIsLoggedIn(false);
+          store.auth.setIsLoggedIn(false);
           return;
         }
 

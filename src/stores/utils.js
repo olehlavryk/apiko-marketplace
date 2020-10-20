@@ -1,4 +1,10 @@
-import { applySnapshot, types, onSnapshot, getParent } from 'mobx-state-tree';
+import {
+  applySnapshot,
+  types,
+  onSnapshot,
+  getParent,
+  getRoot,
+} from 'mobx-state-tree';
 import Api from '../api';
 
 export function asyncModel(thunk, auto = true) {
@@ -13,14 +19,18 @@ export function asyncModel(thunk, auto = true) {
         store.isError = false;
       },
       success() {
-        store.isLoading = true;
+        store.isLoading = false;
       },
       error(err) {
         store.isLoading = false;
         store.isError = true;
       },
       run(...args) {
-        const promise = thunk(...args)(store, getParent(store));
+        const promise = thunk(...args)(
+          store,
+          getParent(store),
+          getRoot(store),
+        );
 
         if (auto) {
           store._auto(promise);
@@ -70,4 +80,24 @@ export function createPersist(store) {
   return {
     rehydrate,
   };
+}
+
+export function createCollection(ofModel, asyncModel = {}) {
+  const collection = types
+    .model('CollectionModel', {
+      collection: types.map(ofModel),
+      ...asyncModel,
+    })
+    .views((store) => ({
+      get(key) {
+        return store.collection.get(String(key));
+      },
+    }))
+    .actions((store) => ({
+      add(key, value) {
+        store.collection.set(String(key), value);
+      },
+    }));
+
+  return types.optional(collection, {});
 }
