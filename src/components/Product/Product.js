@@ -3,14 +3,13 @@ import { generatePath, Link, NavLink } from 'react-router-dom';
 import s from './Product.module.scss';
 import { Icon } from '../Icons/Icon';
 import { routes } from '../../scenes/routes';
+import {
+  setImagePlaceHolder,
+  getImagePlaceHolderPath,
+} from '../../stores/utils';
 
 export const Product = (props) => {
   const { item } = props;
-  const imagePlaceHolder = 'https://via.placeholder.com/500x500';
-
-  function addDefaultSrc(ev) {
-    ev.target.src = imagePlaceHolder;
-  }
 
   return (
     <div className={s.product}>
@@ -22,11 +21,11 @@ export const Product = (props) => {
             src={item.photos[0]}
             alt={item.title}
             className={s.product_preview}
-            onError={addDefaultSrc}
+            onError={(e) => setImagePlaceHolder(e, '500x500')}
           />
         ) : (
           <img
-            src={imagePlaceHolder}
+            src={getImagePlaceHolderPath()}
             alt={item.title}
             className={s.product_preview}
           />

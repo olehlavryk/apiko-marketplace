@@ -101,3 +101,11 @@ export function createCollection(ofModel, asyncModel = {}) {
 
   return types.optional(collection, {});
 }
+
+export const getImagePlaceHolderPath = (size= '500x500') => {
+  return String(`https://via.placeholder.com/${size}`);
+};
+
+export function setImagePlaceHolder(ev, size= '500x500') {
+  ev.target.src = `https://via.placeholder.com/${size}`;
+}
