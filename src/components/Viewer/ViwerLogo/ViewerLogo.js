@@ -1,11 +1,13 @@
 import React from 'react';
 import s from './ViewerLogo.module.scss';
 
-export const ViewerLogo = ({ user }) => {
+export const ViewerLogo = (props) => {
+  const { user } = props;
+
   const firstLettersArr = user.fullName.split(' ');
 
   return (
-    <div className={s.viewer_box}>
+    <div className={s.viewer_box} {...props}>
       {user.avatar != null ? (
         <img
           className={s.viewer_avatar}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import s from './Header.module.scss';
@@ -7,7 +7,6 @@ import { routes } from '../../scenes/routes';
 import './../../App.css';
 import { useStore } from '../../stores/createStore';
 import { ViewerLogo } from '../Viewer/ViwerLogo/ViewerLogo';
-
 
 const UserInfo = observer(() => {
   const store = useStore();
@@ -19,13 +18,10 @@ const UserInfo = observer(() => {
   };
 
   return (
-    <div className={s.user_info} onClick={toggleClick}>
-      <ViewerLogo user={store.viewer.user} />
+    <div className={s.user_info}>
+      <ViewerLogo user={store.viewer.user} onClick={toggleClick} />
       {state.open && (
-        <div
-          className={s.user_info_dropdown}
-          onClick={(e) => e.stopPropagation()}
-        >
+        <div className={s.user_info_dropdown} >
           <div className={s.user_details_box}>
             <ViewerLogo user={store.viewer.user} />
             <div className={s.user_profile}>

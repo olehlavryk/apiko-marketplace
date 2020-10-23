@@ -10,15 +10,14 @@ import {
 
 export const Product = (props) => {
   const { item } = props;
-
   return (
     <div className={s.product}>
       <NavLink
         to={generatePath(routes.product, { productId: item.id })}
       >
-        {item.photos[0] ? (
+        {item.photos ? (
           <img
-            src={item.photos[0]}
+            src={item.photos}
             alt={item.title}
             className={s.product_preview}
             onError={(e) => setImagePlaceHolder(e, '500x500')}
