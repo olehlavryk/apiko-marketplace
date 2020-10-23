@@ -1,7 +1,8 @@
 .product_scene {
   padding-top: 20px;
   background: #f2f2f2;
-  min-height: 850px;
+  min-height: 800px;
+  padding-bottom: 50px;
 
   .content {
     display: flex;
@@ -93,7 +94,8 @@
       }
     }
 
-    .sidebar {
+    .right_sidebar {
+      width: 260px;
       margin-left: 13px;
     }
   }

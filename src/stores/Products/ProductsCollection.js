@@ -14,7 +14,11 @@ export function useProductsCollection() {
 
 function getProduct(id) {
   return async function getProductFlow(flow, store) {
-    const res = await Api.Products.getById(id);
-    store.add(res.data.id, res.data);
+    try {
+      const res = await Api.Products.getById(id);
+      store.add(res.data.id, res.data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 }

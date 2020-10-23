@@ -1,0 +1,81 @@
+.seller_info {
+  width: 260px;
+  background: #FFFFFF;
+  border: 1px solid #DEDEE0;
+  border-radius: 4px;
+  position: relative;
+  padding: 0 0 13px 0;
+  margin-bottom: 18px;
+
+  &:after {
+    content: '';
+    width: 100%;
+    background: #349A89;
+    height: 50px;
+    border-radius: 4px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .seller_avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin: 14px auto 9px auto;
+
+    & > img {
+      display: inline-block;
+      width: inherit;
+      height: inherit;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
+
+    }
+  }
+
+  .seller_name, .seller_location {
+    text-align: center;
+  }
+
+  .seller_name {
+    font-size: 15px;
+    line-height: 17px;
+    color: #2B2B2B;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .seller_location {
+    font-size: 15px;
+    line-height: 17px;
+    color: rgba(43, 43, 43, 0.499918);
+  }
+}
+
+.seller_chat_btn, .add_to_favorite_btn {
+  width: 100%;
+  font-weight: 500;
+}
+
+.seller_chat_btn {
+  margin-bottom: 11px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.add_to_favorite_btn {
+  background-color: transparent;
+  border: 1px solid #349A89;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #535353;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > span {
+    margin-left: 12px;
+  }
+}

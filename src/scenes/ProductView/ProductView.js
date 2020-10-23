@@ -8,6 +8,7 @@ import {
   setImagePlaceHolder,
 } from '../../stores/utils';
 import { Icon } from '../../components/Icons/Icon';
+import { UserInfo } from '../../components/UserInfo/UserInfo';
 
 export const ProductView = observer(() => {
   const { productId } = useParams();
@@ -66,7 +67,9 @@ export const ProductView = observer(() => {
             <div className={s.product_price}>${product.price}</div>
           </div>
         </article>
-        <aside className={s.sidebar}>Some Seller Component</aside>
+        <aside className={s.right_sidebar}>
+          <UserInfo {...{ product }} />
+        </aside>
       </div>
     </main>
   );

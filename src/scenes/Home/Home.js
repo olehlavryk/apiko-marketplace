@@ -11,7 +11,7 @@ export const Home = observer(() => {
     store.latestProducts.fetchLatest.run();
   }, []);
 
-  if (store.latestProducts.fetchLatest.inProgress) {
+  if (store.latestProducts.fetchLatest.isLoading) {
     return <div>Loading ...</div>;
   }
 
