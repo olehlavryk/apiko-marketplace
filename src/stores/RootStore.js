@@ -1,9 +1,11 @@
-import { types } from 'mobx-state-tree';
+import { applySnapshot, types } from 'mobx-state-tree';
 import Api from 'src/api';
 import { AuthStore } from './Auth/AuthStore';
 import { ViewerStore } from './ViewerStore';
 import { LatestProductsStore } from './Products/LatestProductsStore';
 import { EntitiesStore } from './EntitesStore';
+import { useHistory } from 'react-router';
+import { routes } from '../scenes/routes';
 
 export const RootStore = types
   .model('RootStore', {
@@ -20,8 +22,8 @@ export const RootStore = types
         const token = localStorage.getItem('__token');
 
         if (!token) {
-          // todo add logout and remove all data from localstorege
           store.auth.setIsLoggedIn(false);
+          applySnapshot({});
           return;
         }
 
@@ -32,7 +34,8 @@ export const RootStore = types
         store.viewer.setViewer(res.data);
         store.auth.setIsLoggedIn(true);
       } catch (err) {
-        // todo add logout and remove all data from localstorege
+        store.auth.setIsLoggedIn(false);
+        applySnapshot({});
       }
     },
   }));

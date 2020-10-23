@@ -6,6 +6,8 @@ import { Icon } from '../Icons/Icon';
 import { routes } from '../../scenes/routes';
 import './../../App.css';
 import { useStore } from '../../stores/createStore';
+import { ViewerLogo } from '../Viewer/ViwerLogo/ViewerLogo';
+
 
 const UserInfo = observer(() => {
   const store = useStore();
@@ -18,14 +20,14 @@ const UserInfo = observer(() => {
 
   return (
     <div className={s.user_info} onClick={toggleClick}>
+      <ViewerLogo user={store.viewer.user} />
       {state.open && (
         <div
           className={s.user_info_dropdown}
           onClick={(e) => e.stopPropagation()}
         >
           <div className={s.user_details_box}>
-            <div className={s.user_avatar} />
-
+            <ViewerLogo user={store.viewer.user} />
             <div className={s.user_profile}>
               <div className={s.user_name}>
                 {store.viewer.user.fullName}
@@ -57,6 +59,10 @@ const UserInfo = observer(() => {
 
 export const Header = observer(() => {
   const store = useStore();
+
+  const [state, setState] = useState({
+    isLogged: store.auth.isLoggedIn,
+  });
 
   const completedClass = store.auth.isLoggedIn ? s.header_auth : null;
 
