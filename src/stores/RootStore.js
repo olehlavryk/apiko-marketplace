@@ -23,7 +23,7 @@ export const RootStore = types
 
         if (!token) {
           store.auth.setIsLoggedIn(false);
-          applySnapshot({});
+          applySnapshot(store,{});
           return;
         }
 
@@ -35,7 +35,7 @@ export const RootStore = types
         store.auth.setIsLoggedIn(true);
       } catch (err) {
         store.auth.setIsLoggedIn(false);
-        applySnapshot({});
+        applySnapshot(store,{});
       }
     },
   }));

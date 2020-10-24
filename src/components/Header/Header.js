@@ -42,7 +42,7 @@ const UserInfo = observer(() => {
               <Link to={routes.profile}>Edit Profile</Link>
             </li>
             <li>
-              <Link to="#" onClick={store.auth.logout}>
+              <Link to={routes.login} onClick={store.auth.logout}>
                 Logout
               </Link>
             </li>
@@ -55,10 +55,6 @@ const UserInfo = observer(() => {
 
 export const Header = observer(() => {
   const store = useStore();
-
-  const [state, setState] = useState({
-    isLogged: store.auth.isLoggedIn,
-  });
 
   const completedClass = store.auth.isLoggedIn ? s.header_auth : null;
 

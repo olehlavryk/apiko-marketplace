@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { Link, useHistory, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useStore } from 'src/stores/createStore';
 import { Label } from 'src/components/Form/Label/Label';
 import { TextInput } from 'src/components/Form/TextInput/TextInput';
@@ -14,7 +14,10 @@ export const LoginForm = () => {
   const store = useStore();
   const history = useHistory();
 
-  const [loginError, setLoginError] = useState(false);
+  const [state, setState] = useState({
+    error: false,
+    errorMessage: null,
+  });
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -33,13 +36,30 @@ export const LoginForm = () => {
       validationSchema={LoginSchema}
       onSubmit={async (values, { resetForm }) => {
         const { email, password } = values;
-        console.log(values);
+
         try {
           await store.auth.login.run({ email, password });
+
+          store.auth.setIsLoggedIn(true);
           history.push(routes.home);
         } catch (err) {
-          setLoginError(true);
-          resetForm({ values: '' });
+          if (err.response.status === 404) {
+            setState({
+              error: true,
+              errorMessage:
+                ' Wrong login or password! Please try again!',
+            });
+          } else {
+            setState({
+              error: true,
+              errorMessage: 'Something goes wrong! Please try again.',
+            });
+          }
+
+          resetForm({
+            email: '',
+            password: '',
+          });
         }
       }}
     >
@@ -91,9 +111,9 @@ export const LoginForm = () => {
             ) : null}
           </div>
 
-          {loginError ? (
+          {state.error ? (
             <span className={s.errors_small}>
-              Wrong login or password! Please try again!
+              {state.errorMessage}
             </span>
           ) : null}
 

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { routes } from '../scenes/routes';
+import { useHistory } from 'react-router';
 
-// axios.defaults.baseURL =
-//   'https://apiko-intensive-backend.herokuapp.com/';
+
 
 export const Auth = {
   _token: null,
@@ -12,9 +13,9 @@ export const Auth = {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
 
-  logout() {
+  async logout() {
     this._token = null;
-    localStorage.removeItem('__token');
+    await localStorage.removeItem('__token');
     axios.defaults.headers.common.Authorization = `undefined`;
   },
 

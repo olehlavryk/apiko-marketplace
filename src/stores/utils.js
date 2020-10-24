@@ -6,6 +6,7 @@ import {
   getRoot,
 } from 'mobx-state-tree';
 import Api from '../api';
+import { useState } from 'react';
 
 export function asyncModel(thunk, auto = true) {
   const model = types
@@ -110,3 +111,5 @@ export const getImagePlaceHolderPath = (size = '500x500') => {
 export function setImagePlaceHolder(ev, size = '500x500') {
   ev.target.src = `https://via.placeholder.com/${size}`;
 }
+
+export const useForceUpdate = () => useState()[1];

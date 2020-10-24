@@ -4,7 +4,8 @@ import s from './ViewerLogo.module.scss';
 export const ViewerLogo = (props) => {
   const { user } = props;
 
-  const firstLettersArr = user.fullName.split(' ');
+  let initials = user.fullName.match(/\b\w/g) || [];
+  initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
 
   return (
     <div className={s.viewer_box} {...props}>
@@ -16,8 +17,7 @@ export const ViewerLogo = (props) => {
         />
       ) : (
         <div className={s.viewer_without_avatar}>
-          {firstLettersArr[0][0]}
-          {firstLettersArr[1][0]}
+          {initials}
         </div>
       )}
     </div>

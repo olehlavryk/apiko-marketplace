@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import s from './Main.module.scss';
 import { Header } from '../../components/Header/Header';

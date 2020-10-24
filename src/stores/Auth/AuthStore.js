@@ -6,13 +6,14 @@ export const AuthStore = types
   .model('AuthStore', {
     login: asyncModel(loginFlow),
     isLoggedIn: false,
+    register: asyncModel(registerFlow),
   })
   .actions((store) => ({
     setIsLoggedIn(value) {
       store.isLoggedIn = value;
     },
     logout() {
-      store.isLoggedIn = false;
+      store.setIsLoggedIn(false);
       Api.Auth.logout();
     },
   }));
@@ -26,4 +27,16 @@ function loginFlow({ password, email }) {
 
     getRoot(flow).viewer.setViewer(res.data.user);
   };
+}
+
+function registerFlow({ email, password, fullName}) {
+  return async (flow) => {
+    const res = await Api.Auth.register({ email, password, fullName});
+
+    //todo set user and viwer and redirect to home
+    //console.log(res.data)
+    Api.Auth.setToken(res.data.token);
+
+    getRoot(flow).viewer.setViewer(res.data.user);
+  }
 }

@@ -12,5 +12,5 @@ export const ProductModel = types.model('ProductModel', {
   saved: false,
   createdAt: types.string,
   updatedAt: types.string,
-  owner: types.maybe(UserModel)
+  owner: types.maybe(UserModel),
 });
