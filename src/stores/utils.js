@@ -7,6 +7,7 @@ import {
 } from 'mobx-state-tree';
 import Api from '../api';
 import { useState } from 'react';
+import { normalize } from 'normalizr';
 
 export function asyncModel(thunk, auto = true) {
   const model = types
@@ -39,6 +40,13 @@ export function asyncModel(thunk, auto = true) {
 
         return promise;
       },
+      merge(data, schema) {
+        const { entities, result } = normalize(data, schema);
+
+        getRoot(store).entities.merge(entities);
+
+        return result;
+      },
       async _auto(promise) {
         try {
           store.start();
@@ -58,6 +66,7 @@ export function asyncModel(thunk, auto = true) {
 
 export function createPersist(store) {
   onSnapshot(store, (snapshot) => {
+    //console.log(JSON.stringify(snapshot, null, 2));
     localStorage.setItem(
       '__persist',
       JSON.stringify({
