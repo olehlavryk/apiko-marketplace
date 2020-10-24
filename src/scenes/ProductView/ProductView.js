@@ -17,7 +17,7 @@ export const ProductView = observer(() => {
   const product = collection.get(productId);
 
   useEffect(() => {
-    if (!product) {
+    if (!product || !product.owner) {
       collection.getProduct.run(productId);
     }
   }, []);
@@ -29,7 +29,7 @@ export const ProductView = observer(() => {
   }
   const timestamp = Date.parse(product.createdAt);
   const date = new Date(timestamp);
-
+  console.log(product);
   return (
     <main className={s.product_scene}>
       <div className={`${s.content} container`}>
@@ -68,7 +68,10 @@ export const ProductView = observer(() => {
           </div>
         </article>
         <aside className={s.right_sidebar}>
-          <UserInfo {...{ product }} />
+          {product.owner &&
+            <UserInfo {...{ product }} />
+          }
+
         </aside>
       </div>
     </main>
