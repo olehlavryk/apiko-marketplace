@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useParams } from 'react-router';
 import { useProductsCollection } from 'src/stores/Products/ProductsCollection';
 import s from './ProductView.module.scss';
@@ -22,14 +23,36 @@ export const ProductView = observer(() => {
     }
   }, []);
 
+  // Loading or not found.
   if (collection.getProduct.isLoading) {
-    return <div>loading...</div>;
+    return (
+      <main className={s.product_scene}>
+        <div className={`${s.content} container`}>
+          <div className={s.product_content}>
+            <SkeletonTheme color="#fff">
+              <Skeleton height={430} />
+            </SkeletonTheme>
+          </div>
+          <div className={s.right_sidebar}>
+            <SkeletonTheme color="#fff">
+              <Skeleton height={145} className={s.user_info_skeleton} />
+            </SkeletonTheme>
+            <SkeletonTheme color="#fff">
+              <Skeleton height={56} className={s.right_sidebar_btns_skeleton} />
+            </SkeletonTheme>
+            <SkeletonTheme color="#fff" className={s.right_sidebar_btns_skeleton}>
+              <Skeleton height={56} />
+            </SkeletonTheme>
+          </div>
+        </div>
+      </main>
+    );
   } else if (!product) {
     return <div>Product not found!</div>;
   }
   const timestamp = Date.parse(product.createdAt);
   const date = new Date(timestamp);
-  //console.log(product);
+
   return (
     <main className={s.product_scene}>
       <div className={`${s.content} container`}>
