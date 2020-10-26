@@ -13,4 +13,4 @@ export const ProductModel = types.model('ProductModel', {
   createdAt: types.string,
   updatedAt: types.string,
   owner: types.maybe(types.late(() => UserModel)),
-});
+})

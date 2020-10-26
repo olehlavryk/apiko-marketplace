@@ -133,3 +133,19 @@
     }
   }
 }
+
+.tab_panel_content {
+  padding: 18px 27px;
+}
+
+.products_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  li {
+    width: calc(25% - 12px);
+    margin-bottom: 10px;
+  }
+}
+

@@ -14,7 +14,7 @@ export const Home = observer(() => {
   if (store.latestProducts.fetchLatest.isLoading) {
     return <div>Loading ...</div>;
   }
-
+  console.log(store.latestProducts.items);
   return (
     <>
       <main className={s.home_scene}>

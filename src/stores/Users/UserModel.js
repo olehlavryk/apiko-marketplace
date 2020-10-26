@@ -10,5 +10,5 @@ export const UserModel = types.model('UserModel', {
   createdAt: types.string,
   updatedAt: types.string,
   email: types.maybe(types.string),
-  ownProducts: types.optional(OwnProducts, {})
+  ownProducts: types.optional(OwnProducts, {}),
 });

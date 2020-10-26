@@ -6,3 +6,4 @@ export const Product = new schema.Entity('products', {
 });
 export const LatestProducts = new schema.Entity('products');
 export const LatestProductsCollection = [LatestProducts];
+export const OwnProducts = [Product];

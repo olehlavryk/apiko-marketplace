@@ -3,6 +3,7 @@ import Api from 'src/api';
 import { AuthStore } from './Auth/AuthStore';
 import { ViewerStore } from './ViewerStore';
 import { LatestProductsStore } from './Products/LatestProductsStore';
+import { OwnProducts } from './Products/OwnProductsStore';
 import { EntitiesStore } from './EntitesStore';
 import { useHistory } from 'react-router';
 import { routes } from '../scenes/routes';
@@ -12,7 +13,7 @@ export const RootStore = types
     auth: types.optional(AuthStore, {}),
     viewer: types.optional(ViewerStore, {}),
     latestProducts: types.optional(LatestProductsStore, {}),
-
+    ownProducts: types.optional(OwnProducts, {}),
     entities: types.optional(EntitiesStore, {}),
   })
   .actions((store) => ({
