@@ -40,11 +40,14 @@
   }
 
   .seller_name {
-    font-size: 15px;
-    line-height: 17px;
-    color: #2B2B2B;
-    font-weight: 600;
-    margin-bottom: 5px;
+
+    & > a {
+      font-size: 15px;
+      line-height: 17px;
+      color: #2B2B2B;
+      font-weight: 600;
+      text-decoration: none;
+    }
   }
 
   .seller_location {

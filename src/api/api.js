@@ -2,8 +2,6 @@ import axios from 'axios';
 import { routes } from '../scenes/routes';
 import { useHistory } from 'react-router';
 
-
-
 export const Auth = {
   _token: null,
 
@@ -51,5 +49,11 @@ export const Products = {
 
   getById(id) {
     return axios.get(`/api/products/${id}`);
+  },
+};
+
+export const Users = {
+  getById(id) {
+    return axios.get(`/api/users/${id}`);
   },
 };

@@ -5,9 +5,9 @@ import {
   getParent,
   getRoot,
 } from 'mobx-state-tree';
-import Api from '../api';
 import { useState } from 'react';
 import { normalize } from 'normalizr';
+import Api from '../api';
 
 export function asyncModel(thunk, auto = true) {
   const model = types

@@ -8,7 +8,7 @@ import {
   setImagePlaceHolder,
 } from '../../stores/utils';
 import { Icon } from '../../components/Icons/Icon';
-import { UserInfo } from '../../components/UserInfo/UserInfo';
+import { UserInfo } from '../../components/User/UserInfo/UserInfo';
 
 export const ProductView = observer(() => {
   const { productId } = useParams();
@@ -29,16 +29,16 @@ export const ProductView = observer(() => {
   }
   const timestamp = Date.parse(product.createdAt);
   const date = new Date(timestamp);
-  console.log(product);
+  //console.log(product);
   return (
     <main className={s.product_scene}>
       <div className={`${s.content} container`}>
         <article className={s.product_content}>
           {/* Product preview */}
           <div className={s.product_preview}>
-            {product.photos[0] ? (
+            {product.photos ? (
               <img
-                src={product.photos[0]}
+                src={product.photos}
                 alt={product.title}
                 onError={(e) => setImagePlaceHolder(e, '580x275')}
               />
@@ -68,10 +68,7 @@ export const ProductView = observer(() => {
           </div>
         </article>
         <aside className={s.right_sidebar}>
-          {product.owner &&
-            <UserInfo {...{ product }} />
-          }
-
+          {product.owner && <UserInfo {...{ product }} />}
         </aside>
       </div>
     </main>

@@ -19,6 +19,7 @@ export const routes = {
   reset: '/auth/reset',
   profile: '/user/profile',
   product: '/products/:productId',
+  user: '/users/:userId/products',
 };
 
 export const PrivateRoute = observer(
