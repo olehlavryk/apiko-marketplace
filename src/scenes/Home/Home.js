@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import s from './Home.module.scss';
 import { useStore } from '../../stores/createStore';
 import { FilterBar } from '../../components/FilterBar/FilterBar';
@@ -11,26 +12,118 @@ export const Home = observer(() => {
     store.latestProducts.fetchLatest.run();
   }, []);
 
+  // Loading
   if (store.latestProducts.fetchLatest.isLoading) {
-    return <div>Loading ...</div>;
-  }
-  console.log(store.latestProducts.items);
-  return (
-    <>
+    return(
       <main className={s.home_scene}>
         <div className="container">
-          <FilterBar />
+          <SkeletonTheme color="#fff">
+            <Skeleton height={42} className={s.filter_bar_skeleton} />
+          </SkeletonTheme>
           <div className={s.products_section}>
             <ul className={s.products_list}>
-              {store.latestProducts.items.map((item) => (
-                <li key={item.id}>
-                  <Product {...{ item }} />
-                </li>
-              ))}
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
+              <li>
+                <SkeletonTheme color="#fff">
+                  <Skeleton width={286} height={274} />
+                </SkeletonTheme>
+              </li>
             </ul>
           </div>
         </div>
       </main>
-    </>
+    );
+  }
+
+  // Content
+  return (
+    <main className={s.home_scene}>
+      <div className="container">
+        <FilterBar />
+        <div className={s.products_section}>
+          <ul className={s.products_list}>
+            {store.latestProducts.items.map((item) => (
+              <li key={item.id}>
+                <Product {...{ item }} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </main>
   );
 });
