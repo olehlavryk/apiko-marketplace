@@ -1,20 +1,75 @@
 import React, { useEffect } from 'react';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { observer } from 'mobx-react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import s from './UserStatistics.module.scss';
 import { useStore } from '../../../stores/createStore';
 import { Product } from '../../Product/Product';
 
-export const UserStatistics = observer( ({ user }) => {
+export const UserStatistics = observer(({ user }) => {
   const store = useStore();
   useEffect(() => {
     store.ownProducts.fetch.run(user.id);
   }, []);
 
+  // Loading
   if (store.ownProducts.fetch.isLoading) {
-    return <div>Loading ...</div>;
+    const skeletons = [];
+
+    // create products skeletons
+    for (let i = 0; i < 12; i++) {
+      skeletons.push(
+        <li>
+          <SkeletonTheme color="#ccc">
+            <Skeleton width={200} height={274} />
+          </SkeletonTheme>
+        </li>,
+      );
+    }
+
+    return (
+      <>
+        <div className={s.user_avatar_block}>
+          <SkeletonTheme color="#ccc">
+            <Skeleton
+              width={95}
+              height={95}
+              circle
+              className={s.user_avatar_block}
+            />
+          </SkeletonTheme>
+        </div>
+        <div className={s.user_name}>
+          <SkeletonTheme color="#ccc">
+            <Skeleton
+              width={95}
+              height={24}
+              className={s.user_name}
+            />
+          </SkeletonTheme>
+        </div>
+        <div className={s.user_location}>
+          <SkeletonTheme color="#ccc">
+            <Skeleton
+              width={120}
+              height={18}
+              className={s.user_location}
+            />
+          </SkeletonTheme>
+        </div>
+        <div className={s.tabs_skeleton}>
+          <SkeletonTheme color="#ccc">
+            <Skeleton width={492} height={75} />
+          </SkeletonTheme>
+        </div>
+        <div className={s.products_block_skeleton}>
+          <ul className={s.products_list}>{skeletons}</ul>
+        </div>
+      </>
+    );
   }
 
+  // Content
   let initials = user.fullName.match(/\b\w/g) || [];
   initials = (
     (initials.shift() || '') + (initials.pop() || '')
@@ -56,8 +111,13 @@ export const UserStatistics = observer( ({ user }) => {
             </div>
             <span className={s.tab_subtitle}>Sales</span>
           </Tab>
-          <Tab className={`${s.tab_item}`} selectedClassName={s.active}>
-            <div className={s.tab_title}>{store.ownProducts.items.length}</div>
+          <Tab
+            className={`${s.tab_item}`}
+            selectedClassName={s.active}
+          >
+            <div className={s.tab_title}>
+              {store.ownProducts.items.length}
+            </div>
             <span className={s.tab_subtitle}>Active listings</span>
           </Tab>
         </TabList>
