@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { generatePath, Link, useHistory } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import s from './Header.module.scss';
 import { Icon } from '../Icons/Icon';
@@ -21,7 +21,7 @@ const UserInfo = observer(() => {
     <div className={s.user_info}>
       <ViewerLogo user={store.viewer.user} onClick={toggleClick} />
       {state.open && (
-        <div className={s.user_info_dropdown} >
+        <div className={s.user_info_dropdown}>
           <div className={s.user_details_box}>
             <ViewerLogo user={store.viewer.user} />
             <div className={s.user_profile}>
@@ -39,7 +39,13 @@ const UserInfo = observer(() => {
 
           <ul className={s.profile_menu}>
             <li>
-              <Link to={routes.profile}>Edit Profile</Link>
+              <Link
+                to={generatePath(routes.user, {
+                  userId: store.viewer.user.id,
+                })}
+              >
+                Edit Profile
+              </Link>
             </li>
             <li>
               <Link to={routes.login} onClick={store.auth.logout}>

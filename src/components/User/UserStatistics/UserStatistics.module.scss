@@ -41,8 +41,10 @@
   line-height: 15px;
   text-align: center;
   color: #9099A7;
+}
 
-
+.no_products {
+  text-align: center;
 }
 
 // Tabs
@@ -147,6 +149,8 @@
     width: calc(25% - 12px);
     margin-bottom: 10px;
   }
+
+
 }
 
 // Skeletons
@@ -159,3 +163,5 @@
 .products_block_skeleton {
   padding: 0 27px;
 }
+
+

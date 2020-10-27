@@ -75,6 +75,22 @@ export const UserStatistics = observer(({ user }) => {
     (initials.shift() || '') + (initials.pop() || '')
   ).toUpperCase();
 
+  const ownProducts = [];
+
+  if (store.ownProducts.items.length > 0) {
+    store.ownProducts.items.map((item) =>
+      ownProducts.push(
+        <li key={item.id}>
+          <Product {...{ item }} />
+        </li>,
+      ),
+    );
+  } else {
+    ownProducts.push(
+      <div className={s.no_products}>There are no products yet!</div>,
+    );
+  }
+
   return (
     <>
       {/* User Avatar */}
@@ -134,13 +150,11 @@ export const UserStatistics = observer(({ user }) => {
         </TabPanel>
         <TabPanel>
           <div className={s.tab_panel_content}>
-            <ul className={s.products_list}>
-              {store.ownProducts.items.map((item) => (
-                <li key={item.id}>
-                  <Product {...{ item }} />
-                </li>
-              ))}
-            </ul>
+            {store.ownProducts.items.length > 0 ? (
+              <ul className={s.products_list}>{ownProducts}</ul>
+            ) : (
+              ownProducts
+            )}
           </div>
         </TabPanel>
       </Tabs>
