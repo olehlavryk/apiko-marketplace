@@ -19,7 +19,7 @@ export const UserStatistics = observer(({ user }) => {
     // create products skeletons
     for (let i = 0; i < 12; i++) {
       skeletons.push(
-        <li>
+        <li key={i}>
           <SkeletonTheme color="#ccc">
             <Skeleton width={200} height={274} />
           </SkeletonTheme>

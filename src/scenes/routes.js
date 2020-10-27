@@ -19,6 +19,7 @@ export const routes = {
   reset: '/auth/reset',
   profile: '/user/profile',
   product: '/products/:productId',
+  productAdd: '/product/add',
   user: '/users/:userId/products',
 };
 
@@ -32,6 +33,25 @@ export const PrivateRoute = observer(
         render={(...renderProps) =>
           store.auth.isLoggedIn ? (
             <Redirect to={routes.home} />
+          ) : (
+            <Component {...renderProps} />
+          )
+        }
+      />
+    );
+  },
+);
+
+export const ProtectedRoute = observer(
+  ({ component: Component, ...props }) => {
+    const store = useStore();
+
+    return (
+      <Route
+        {...props}
+        render={(...renderProps) =>
+          !store.auth.isLoggedIn ? (
+            <Redirect to={routes.login} />
           ) : (
             <Component {...renderProps} />
           )

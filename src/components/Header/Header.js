@@ -79,7 +79,7 @@ export const Header = observer(() => {
         </div>
         <div className={s.right}>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <Link to={routes.home} className={s.primary_link}>
+          <Link to={routes.productAdd} className={s.primary_link}>
             Sell
           </Link>
 

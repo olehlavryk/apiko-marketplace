@@ -47,7 +47,7 @@ export const LoginForm = () => {
             setState({
               error: true,
               errorMessage:
-                ' Wrong login or password! Please try again!',
+                'Wrong login or password! Please try again!',
             });
           } else {
             setState({
