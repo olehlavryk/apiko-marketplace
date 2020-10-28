@@ -14,6 +14,6 @@ TextArea.propTypes = {
   children: T.string,
 };
 
-TextArea.defaultProps = {
+TextArea.defaultValue = {
   children: 'For example: Iron man suit',
 };

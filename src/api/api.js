@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { routes } from '../scenes/routes';
-import { useHistory } from 'react-router';
 
 export const Auth = {
   _token: null,
@@ -53,6 +51,16 @@ export const Products = {
 
   byUserId(id) {
     return axios.get(`/api/users/${id}/products`);
+  },
+
+  addProduct({ title, location, description, price, photos }) {
+    return axios.post('/api/products', {
+      title,
+      location,
+      description,
+      price,
+      photos,
+    });
   },
 };
 

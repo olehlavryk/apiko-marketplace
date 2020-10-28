@@ -21,6 +21,24 @@ export const AddProductForm = () => {
     errorMessage: null,
   });
 
+  const [selectedFiles, setSelectedFiles] = useState([]);
+
+  const captureFile = (event) => {
+    const files = [];
+    let count = 0;
+    for (const file of event.target.files) {
+      if (count < 5) {
+        files.push(URL.createObjectURL(file));
+      }
+      count++;
+    }
+    setSelectedFiles(files);
+  };
+
+  const imagesPreview = selectedFiles.map((item, key) => (
+    <img key={key} src={item} alt="Product preview" />
+  ));
+
   const LoginSchema = Yup.object().shape({
     title: Yup.string()
       .required('Title is a required field')
@@ -32,10 +50,11 @@ export const AddProductForm = () => {
       .max(60, 'We prefer insecure system, try a shorter password.'),
   });
 
-  const chooseImages = () => {
+  const chooseImages = (e) => {
+    e.preventDefault();
     fileInputRef.current.click();
   };
-
+  //console.log(selectedFiles);
   return (
     <Formik
       initialValues={{
@@ -43,16 +62,28 @@ export const AddProductForm = () => {
         location: '',
         description: '',
         price: 0,
-        photos: [],
+        photos: selectedFiles,
       }}
       validationSchema={LoginSchema}
-      onSubmit={async (values, { resetForm }) => {
-        const { email, password } = values;
+      onSubmit={async (values, { resetForm, setFieldValue }) => {
+        const {
+          title,
+          location,
+          description,
+          price,
+        } = values;
 
+        const photos = selectedFiles;
+
+        //console.log(photos);
         try {
-          await store.auth.login.run({ email, password });
-
-          store.auth.setIsLoggedIn(true);
+          await store.entities.products.addProduct.run({
+            title,
+            location,
+            description,
+            price,
+            photos,
+          });
           history.push(routes.home);
         } catch (err) {
           if (err.response.status === 404) {
@@ -153,11 +184,17 @@ export const AddProductForm = () => {
                 type="file"
                 ref={fileInputRef}
                 id="add_photo_inp"
+                name="photos"
                 className={s.hidden_file_input}
+                onChange={(e) => captureFile(e)}
+                multiple
               />
+              <div className={s.images_preview_box}>
+                {imagesPreview}
+              </div>
               <button
                 className={s.add_photo_btn}
-                onClick={chooseImages}
+                onClick={(e) => chooseImages(e)}
               >
                 <Icon name="plus" />
               </button>
@@ -171,13 +208,12 @@ export const AddProductForm = () => {
           <div className={s.form_row}>
             <Label htmlFor="price">Price</Label>
             <TextInput
-              type="text"
-              name="location"
-              id="location"
+              type="number"
+              name="price"
+              id="price"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.location}
-              placeholder="For example: Los Angeles, CA"
+              value={values.price}
             />
             {errors.price && touched.price ? (
               <span className={s.errors_small}>

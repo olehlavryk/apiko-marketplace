@@ -78,7 +78,7 @@ export const UserStatistics = observer(({ user }) => {
   const ownProducts = [];
 
   if (store.ownProducts.items.length > 0) {
-    store.ownProducts.items.map((item) =>
+    store.ownProducts.items.map((item, index) =>
       ownProducts.push(
         <li key={item.id}>
           <Product {...{ item }} />
@@ -87,7 +87,7 @@ export const UserStatistics = observer(({ user }) => {
     );
   } else {
     ownProducts.push(
-      <div className={s.no_products}>There are no products yet!</div>,
+      <div key={1} className={s.no_products}>There are no products yet!</div>,
     );
   }
 

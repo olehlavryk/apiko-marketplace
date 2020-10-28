@@ -14,7 +14,7 @@ export const TextInput = ({ value, type, ...props }) => {
 };
 
 TextInput.propTypes = {
-  value: T.string,
+  value: T.oneOfType([T.string, T.number]),
   type: T.string,
 };
 
