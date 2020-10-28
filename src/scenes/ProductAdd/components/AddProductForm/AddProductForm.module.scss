@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
 
+
     .hidden_file_input {
       display: none;
     }
@@ -18,8 +19,7 @@
     .images_preview_box {
 
       & > img {
-        max-width: 92px;
-        width: 100%;
+        width: 92px;
         height: 92px;
         display: inline-block;
         margin: 0 2px 0 0;

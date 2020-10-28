@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import ReactFileReader from 'react-file-reader';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import s from './AddProductForm.module.scss';
@@ -23,16 +24,16 @@ export const AddProductForm = () => {
 
   const [selectedFiles, setSelectedFiles] = useState([]);
 
-  const captureFile = (event) => {
-    const files = [];
+  const handleFiles = (files) => {
+    const arrFiles = [];
     let count = 0;
-    for (const file of event.target.files) {
+    for (const file of files.base64) {
       if (count < 5) {
-        files.push(URL.createObjectURL(file));
+        arrFiles.push(file);
       }
       count++;
     }
-    setSelectedFiles(files);
+    setSelectedFiles(arrFiles);
   };
 
   const imagesPreview = selectedFiles.map((item, key) => (
@@ -54,7 +55,7 @@ export const AddProductForm = () => {
     e.preventDefault();
     fileInputRef.current.click();
   };
-  //console.log(selectedFiles);
+  // console.log(selectedFiles);
   return (
     <Formik
       initialValues={{
@@ -66,16 +67,11 @@ export const AddProductForm = () => {
       }}
       validationSchema={LoginSchema}
       onSubmit={async (values, { resetForm, setFieldValue }) => {
-        const {
-          title,
-          location,
-          description,
-          price,
-        } = values;
+        const { title, location, description, price } = values;
 
         const photos = selectedFiles;
 
-        //console.log(photos);
+        // console.log(photos);
         try {
           await store.entities.products.addProduct.run({
             title,
@@ -180,24 +176,21 @@ export const AddProductForm = () => {
           <div className={s.form_row}>
             <Label htmlFor="description">Photos</Label>
             <div className={s.photos_wrapper}>
-              <input
-                type="file"
-                ref={fileInputRef}
-                id="add_photo_inp"
-                name="photos"
-                className={s.hidden_file_input}
-                onChange={(e) => captureFile(e)}
-                multiple
-              />
               <div className={s.images_preview_box}>
                 {imagesPreview}
               </div>
-              <button
-                className={s.add_photo_btn}
-                onClick={(e) => chooseImages(e)}
+              <ReactFileReader
+                handleFiles={handleFiles}
+                multipleFiles
+                base64
               >
-                <Icon name="plus" />
-              </button>
+                <button
+                  className={s.add_photo_btn}
+                  onClick={(e) => e.preventDefault()}
+                >
+                  <Icon name="plus" />
+                </button>
+              </ReactFileReader>
             </div>
             {errors.photos && touched.photos ? (
               <span className={s.errors_small}>
@@ -213,7 +206,7 @@ export const AddProductForm = () => {
               id="price"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.price}
+              // value={values.price}
             />
             {errors.price && touched.price ? (
               <span className={s.errors_small}>
