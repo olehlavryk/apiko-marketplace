@@ -10,25 +10,35 @@ import {
 
 export const Product = (props) => {
   const { item } = props;
+
+  let productPreview = null;
+
+  try {
+    productPreview = (
+      <img
+        src={item.photos.get(0)}
+        alt={item.title}
+        className={s.product_preview}
+        onError={(e) => setImagePlaceHolder(e, '500x500')}
+      />
+    );
+  } catch (err) {
+    productPreview = (
+      <img
+        src={getImagePlaceHolderPath()}
+        alt={item.title}
+        className={s.product_preview}
+        onError={(e) => setImagePlaceHolder(e, '500x500')}
+      />
+    );
+  }
+
   return (
     <div className={s.product}>
       <NavLink
         to={generatePath(routes.product, { productId: item.id })}
       >
-        {item.photos ? (
-          <img
-            src={item.photos}
-            alt={item.title}
-            className={s.product_preview}
-            onError={(e) => setImagePlaceHolder(e, '500x500')}
-          />
-        ) : (
-          <img
-            src={getImagePlaceHolderPath()}
-            alt={item.title}
-            className={s.product_preview}
-          />
-        )}
+        {productPreview}
       </NavLink>
       <div className={s.product_info}>
         <Link
