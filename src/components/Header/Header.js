@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { generatePath, Link, useHistory } from 'react-router-dom';
+import { generatePath, Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import s from './Header.module.scss';
 import { Icon } from '../Icons/Icon';
@@ -13,13 +13,34 @@ const UserInfo = observer(() => {
 
   const [state, setState] = useState({ open: false });
 
-  const toggleClick = () => {
+  const toggleDropDown = () => {
     setState({ open: !state.open });
   };
 
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setState({ open: false });
+        }
+      }
+
+      // Bind the event listener
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+
   return (
-    <div className={s.user_info}>
-      <ViewerLogo user={store.viewer.user} onClick={toggleClick} />
+    <div className={s.user_info} ref={wrapperRef}>
+      <ViewerLogo user={store.viewer.user} onClick={toggleDropDown} />
       {state.open && (
         <div className={s.user_info_dropdown}>
           <div className={s.user_details_box}>
