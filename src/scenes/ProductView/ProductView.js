@@ -92,7 +92,7 @@ export const ProductView = observer(() => {
           {/* Product details */}
           <div className={s.product_details}>
             <div className={s.product_title}>
-              {product.title}
+              {product.firstLetterToUpper}
               <span>{date.toDateString()}</span>
             </div>
             <div className={s.product_location}>

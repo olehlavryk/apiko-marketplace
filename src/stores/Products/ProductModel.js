@@ -16,7 +16,9 @@ export const ProductModel = types
     owner: types.maybe(types.late(() => UserModel)),
   })
   .views((store) => ({
-    get nameFirstLetterToUpper() {
-      return store.title.charAt(0).toUpperCase() + store.title.slice(1);
+    get firstLetterToUpper() {
+      return (
+        store.title.charAt(0).toUpperCase() + store.title.slice(1)
+      );
     },
   }));

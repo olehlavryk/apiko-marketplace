@@ -46,7 +46,7 @@ export const Product = (props) => {
           to={generatePath(routes.product, { productId: item.id })}
           className={s.product_title}
         >
-          {item.title}
+          {item.firstLetterToUpper}
         </Link>
         <div className={s.product_price}>${item.price}</div>
         <div className={s.product_like_wrap}>
