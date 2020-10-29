@@ -7,6 +7,7 @@ export const AuthStore = types
     login: asyncModel(loginFlow),
     isLoggedIn: false,
     register: asyncModel(registerFlow),
+    restore: asyncModel(restoreFlow),
   })
   .actions((store) => ({
     setIsLoggedIn(value) {
@@ -29,14 +30,25 @@ function loginFlow({ password, email }) {
   };
 }
 
-function registerFlow({ email, password, fullName}) {
+function registerFlow({ email, password, fullName }) {
   return async (flow) => {
-    const res = await Api.Auth.register({ email, password, fullName});
+    const res = await Api.Auth.register({
+      email,
+      password,
+      fullName,
+    });
 
-    //todo set user and viwer and redirect to home
-    //console.log(res.data)
     Api.Auth.setToken(res.data.token);
 
     getRoot(flow).viewer.setViewer(res.data.user);
-  }
+  };
+}
+
+function restoreFlow({ email }) {
+  return async (flow) => {
+    // todo generate new random password, then send email
+
+    // send back message to user
+    return `We've got your request for restoring password and send restore instructions to ${email}`;
+  };
 }

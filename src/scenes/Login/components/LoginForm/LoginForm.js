@@ -99,7 +99,7 @@ export const LoginForm = () => {
               onBlur={handleBlur}
             />
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <Link className={s.resetPasswordLink} to={routes.reset}>
+            <Link className={s.resetPasswordLink} to={routes.restore}>
               Don’t remember password?
             </Link>
             {errors.password && touched.password ? (
