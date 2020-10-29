@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
+import { values } from 'mobx';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useParams } from 'react-router';
 import { useProductsCollection } from 'src/stores/Products/ProductsCollection';
@@ -35,12 +36,21 @@ export const ProductView = observer(() => {
           </div>
           <div className={s.right_sidebar}>
             <SkeletonTheme color="#fff">
-              <Skeleton height={145} className={s.user_info_skeleton} />
+              <Skeleton
+                height={145}
+                className={s.user_info_skeleton}
+              />
             </SkeletonTheme>
             <SkeletonTheme color="#fff">
-              <Skeleton height={56} className={s.right_sidebar_btns_skeleton} />
+              <Skeleton
+                height={56}
+                className={s.right_sidebar_btns_skeleton}
+              />
             </SkeletonTheme>
-            <SkeletonTheme color="#fff" className={s.right_sidebar_btns_skeleton}>
+            <SkeletonTheme
+              color="#fff"
+              className={s.right_sidebar_btns_skeleton}
+            >
               <Skeleton height={56} />
             </SkeletonTheme>
           </div>
@@ -53,31 +63,36 @@ export const ProductView = observer(() => {
   const timestamp = Date.parse(product.createdAt);
   const date = new Date(timestamp);
 
+  let productPreview = null;
+
+  try {
+    productPreview = (
+      <img
+        src={values(product.photos)[0]}
+        alt={product.title}
+        onError={(e) => setImagePlaceHolder(e, '580x275')}
+      />
+    );
+  } catch (err) {
+    productPreview = (
+      <img
+        src={getImagePlaceHolderPath('580x275')}
+        alt={product.title}
+      />
+    );
+  }
+
   return (
     <main className={s.product_scene}>
       <div className={`${s.content} container`}>
         <article className={s.product_content}>
           {/* Product preview */}
-          <div className={s.product_preview}>
-            {product.photos ? (
-              <img
-                src={product.photos}
-                alt={product.title}
-                onError={(e) => setImagePlaceHolder(e, '580x275')}
-              />
-            ) : (
-              <img
-                src={getImagePlaceHolderPath('580x275')}
-                alt={product.title}
-              />
-            )}
-          </div>
+          <div className={s.product_preview}>{productPreview}</div>
 
           {/* Product details */}
           <div className={s.product_details}>
             <div className={s.product_title}>
-              {product.title.charAt(0).toUpperCase() +
-                product.title.slice(1)}
+              {product.title}
               <span>{date.toDateString()}</span>
             </div>
             <div className={s.product_location}>

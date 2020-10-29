@@ -1,5 +1,6 @@
 import React from 'react';
 import { generatePath, Link, NavLink } from 'react-router-dom';
+import { values } from 'mobx';
 import s from './Product.module.scss';
 import { Icon } from '../Icons/Icon';
 import { routes } from '../../scenes/routes';
@@ -16,7 +17,7 @@ export const Product = (props) => {
   try {
     productPreview = (
       <img
-        src={item.photos.get(0)}
+        src={values(item.photos)[0]}
         alt={item.title}
         className={s.product_preview}
         onError={(e) => setImagePlaceHolder(e, '500x500')}
@@ -45,7 +46,7 @@ export const Product = (props) => {
           to={generatePath(routes.product, { productId: item.id })}
           className={s.product_title}
         >
-          {item.title.charAt(0).toUpperCase() + item.title.slice(1)}
+          {item.title}
         </Link>
         <div className={s.product_price}>${item.price}</div>
         <div className={s.product_like_wrap}>
