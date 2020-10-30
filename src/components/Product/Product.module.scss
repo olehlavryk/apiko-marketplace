@@ -54,16 +54,22 @@
       transition: all 300ms ease-in;
 
       &:hover {
-        background: #349A89;
 
         // todo fix color at hover
-        .product_like path {
-          fill: #fff !important;
-        }
+
       }
 
       .product_like {
 
+
+      }
+    }
+
+    .product_like {
+      fill: #B7B7B7;
+
+      &:hover {
+        fill: red;
       }
     }
   }

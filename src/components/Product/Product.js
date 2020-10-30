@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import { generatePath, Link, NavLink } from 'react-router-dom';
 import { values } from 'mobx';
 import s from './Product.module.scss';
@@ -9,20 +10,32 @@ import {
   getImagePlaceHolderPath,
 } from '../../stores/utils';
 
-export const Product = (props) => {
+export const Product = observer((props) => {
   const { item } = props;
 
   let productPreview = null;
 
   try {
-    productPreview = (
-      <img
-        src={values(item.photos)[0]}
-        alt={item.title}
-        className={s.product_preview}
-        onError={(e) => setImagePlaceHolder(e, '500x500')}
-      />
-    );
+    if(values(item.photos)[0] !== undefined) {
+      productPreview = (
+        <img
+          src={values(item.photos)[0]}
+          alt={item.title}
+          className={s.product_preview}
+          onError={(e) => setImagePlaceHolder(e, '500x500')}
+        />
+      );
+    } else {
+      productPreview = (
+        <img
+          src={getImagePlaceHolderPath()}
+          alt={item.title}
+          className={s.product_preview}
+          onError={(e) => setImagePlaceHolder(e, '500x500')}
+        />
+      );
+    }
+
   } catch (err) {
     productPreview = (
       <img
@@ -33,6 +46,8 @@ export const Product = (props) => {
       />
     );
   }
+
+  //console.log(typeof item.id);
 
   return (
     <div className={s.product}>
@@ -49,14 +64,16 @@ export const Product = (props) => {
           {item.firstLetterToUpper}
         </Link>
         <div className={s.product_price}>${item.price}</div>
+        {String(item.saved)}
         <div className={s.product_like_wrap}>
-          {item.save ? (
-            <Icon name="like" className="product_like" />
+
+          {item.saved ? (
+            <Icon name="like_green" onClick={item.removeProductSave} className="product_like" />
           ) : (
-            <Icon name="like_green" className="product_like" />
+            <Icon name="like" onClick={item.productSave} className="product_like" />
           )}
         </div>
       </div>
     </div>
   );
-};
+});

@@ -62,6 +62,14 @@ export const Products = {
       photos,
     });
   },
+
+  saveById(id) {
+    return axios.post(`/api/products/${id}/saved`);
+  },
+
+  removeSaveById(id) {
+    return axios.delete(`/api/products/${id}/saved`);
+  },
 };
 
 export const Users = {
