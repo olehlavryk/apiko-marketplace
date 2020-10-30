@@ -16,7 +16,7 @@ export const Product = observer((props) => {
   let productPreview = null;
 
   try {
-    if(values(item.photos)[0] !== undefined) {
+    if (values(item.photos)[0] !== undefined) {
       productPreview = (
         <img
           src={values(item.photos)[0]}

@@ -38,7 +38,6 @@ export const ProductModel = types
     }),
 
     removeProductSave: flow(function* productSave() {
-      const oldValue = store.saved;
       store.saved = !store.saved;
 
       try {

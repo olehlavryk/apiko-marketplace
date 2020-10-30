@@ -66,13 +66,22 @@ export const ProductView = observer(() => {
   let productPreview = null;
 
   try {
-    productPreview = (
-      <img
-        src={values(product.photos)[0]}
-        alt={product.title}
-        onError={(e) => setImagePlaceHolder(e, '580x275')}
-      />
-    );
+    if (values(product.photos)[0] !== undefined) {
+      productPreview = (
+        <img
+          src={values(product.photos)[0]}
+          alt={product.title}
+          onError={(e) => setImagePlaceHolder(e, '580x275')}
+        />
+      );
+    } else {
+      productPreview = (
+        <img
+          src={getImagePlaceHolderPath('580x275')}
+          alt={product.title}
+        />
+      );
+    }
   } catch (err) {
     productPreview = (
       <img
