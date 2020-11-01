@@ -24,6 +24,32 @@ export const AddProductForm = () => {
 
   const [selectedFiles, setSelectedFiles] = useState([]);
 
+  const handleUploadImages = async () => {
+    const photosLinks = [];
+    const data = new FormData();
+    const _url =
+      'https://api.cloudinary.com/v1_1/olehlavryk/image/upload';
+
+    for (const image of selectedFiles) {
+      try {
+        data.append('file', image);
+        data.append('upload_preset', 'apiko_upload');
+
+        const res = await fetch(_url, {
+          method: 'POST',
+          body: data,
+        });
+
+        const file = await res.json();
+        photosLinks.push(file.secure_url);
+      } catch (error) {
+        console.log('Error:', error);
+      }
+    }
+
+    return photosLinks;
+  };
+
   const handleFiles = (files) => {
     const arrFiles = [];
     let count = 0;
@@ -49,13 +75,14 @@ export const AddProductForm = () => {
       .required('Location is a required field')
       .min(2, 'Seems a bit short...')
       .max(60, 'We prefer insecure system, try a shorter password.'),
+    price: Yup.string().required('Location is a required field'),
   });
 
   const chooseImages = (e) => {
     e.preventDefault();
     fileInputRef.current.click();
   };
-  // console.log(selectedFiles);
+
   return (
     <Formik
       initialValues={{
@@ -69,9 +96,9 @@ export const AddProductForm = () => {
       onSubmit={async (values, { resetForm, setFieldValue }) => {
         const { title, location, description, price } = values;
 
-        const photos = selectedFiles;
+        const photos = await handleUploadImages();
 
-        // console.log(photos);
+        console.log(photos);
         try {
           await store.entities.products.addProduct.run({
             title,
@@ -199,14 +226,15 @@ export const AddProductForm = () => {
             ) : null}
           </div>
           <div className={s.form_row}>
-            <Label htmlFor="price">Price</Label>
+            <Label htmlFor="price" required>
+              Price
+            </Label>
             <TextInput
               type="number"
               name="price"
               id="price"
               onChange={handleChange}
               onBlur={handleBlur}
-              // value={values.price}
             />
             {errors.price && touched.price ? (
               <span className={s.errors_small}>

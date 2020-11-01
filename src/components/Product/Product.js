@@ -47,8 +47,6 @@ export const Product = observer((props) => {
     );
   }
 
-  //console.log(typeof item.id);
-
   return (
     <div className={s.product}>
       <NavLink
@@ -64,7 +62,6 @@ export const Product = observer((props) => {
           {item.firstLetterToUpper}
         </Link>
         <div className={s.product_price}>${item.price}</div>
-        {String(item.saved)}
         <div className={s.product_like_wrap}>
 
           {item.saved ? (

@@ -29,8 +29,6 @@ export const ProductModel = types
 
       try {
         yield Api.Products.saveById(+store.id);
-
-        console.log('saved successfully!');
       } catch (e) {
         console.log(e);
         store.likeRevert();
@@ -42,8 +40,6 @@ export const ProductModel = types
 
       try {
         yield Api.Products.removeSaveById(+store.id);
-
-        console.log('removed saved successfully!');
       } catch (e) {
         console.log(e);
         store.likeRevert();
