@@ -7,6 +7,7 @@ import { Home } from '../Home/Home';
 import { ProductView } from '../ProductView/ProductView';
 import { User } from '../User/User';
 import { ProductAdd } from '../ProductAdd/ProductAdd';
+import { UserProfile } from '../UserProfile/UserProfile';
 
 export const Main = () => {
   return (
@@ -19,6 +20,10 @@ export const Main = () => {
         <ProtectedRoute
           path={routes.productAdd}
           component={ProductAdd}
+        />
+        <ProtectedRoute
+          path={routes.profile}
+          component={UserProfile}
         />
       </Switch>
     </>

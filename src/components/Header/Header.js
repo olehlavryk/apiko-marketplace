@@ -19,7 +19,6 @@ const UserInfo = observer(() => {
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
-
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
           setState({ open: false });
@@ -52,7 +51,12 @@ const UserInfo = observer(() => {
               <div className={s.user_email}>
                 {store.viewer.user.email}
               </div>
-              <Link to={routes.profile} className={s.user_text}>
+              <Link
+                to={generatePath(routes.user, {
+                  userId: store.viewer.user.id,
+                })}
+                className={s.user_text}
+              >
                 Profile
               </Link>
             </div>
@@ -60,13 +64,7 @@ const UserInfo = observer(() => {
 
           <ul className={s.profile_menu}>
             <li>
-              <Link
-                to={generatePath(routes.user, {
-                  userId: store.viewer.user.id,
-                })}
-              >
-                Edit Profile
-              </Link>
+              <Link to={routes.profile}>Edit Profile</Link>
             </li>
             <li>
               <Link to={routes.login} onClick={store.auth.logout}>
