@@ -64,7 +64,7 @@ const UserInfo = observer(() => {
 
           <ul className={s.profile_menu}>
             <li>
-              <Link to={routes.profile}>Edit Profile</Link>
+              <Link to={routes.viewerProfile}>Edit Profile</Link>
             </li>
             <li>
               <Link to={routes.login} onClick={store.auth.logout}>

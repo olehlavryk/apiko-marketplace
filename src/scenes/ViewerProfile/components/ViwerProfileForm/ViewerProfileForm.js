@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import s from './UserProfileForm.module.scss';
+import s from './ViewerProfileForm.module.scss';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { Link, useHistory } from 'react-router-dom';
 import { useStore } from 'src/stores/createStore';
 import { Label } from 'src/components/Form/Label/Label';
 import { TextInput } from 'src/components/Form/TextInput/TextInput';
-import { PasswordInput } from 'src/components/Form/PasswordInput/PasswordInput';
 import { routes } from 'src/scenes/routes';
 import { Button } from 'src/components/Form/Button/Button';
-import { UserAvatar } from './../UserAvatar/UserAvatar';
+import { UserAvatar } from '../UserAvatar/UserAvatar';
 
-export const UserProfileForm = () => {
+export const ViewerProfileForm = () => {
   const store = useStore();
   const history = useHistory();
 
@@ -37,10 +36,11 @@ export const UserProfileForm = () => {
       initialValues={{
         fullName: store.viewer.user.fullName,
         phone: store.viewer.user.phone,
+        avatar: store.viewer.user.avatar,
       }}
       validationSchema={ProfileSchema}
       onSubmit={async (values, { resetForm }) => {
-        const { fullName, phone } = values;
+        const { fullName, phone, avatar } = values;
 
         // try {
         //   await store.auth.login.run({ email, password });

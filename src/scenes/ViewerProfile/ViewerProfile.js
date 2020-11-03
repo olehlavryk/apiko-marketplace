@@ -1,16 +1,16 @@
 import React from 'react';
-import s from './UserProfile.module.scss';
+import s from './ViewerProfile.module.scss';
 import { Text } from '../../components/Text/Text';
-import { UserProfileForm } from './components/UserProfileForm/UserProfileForm';
+import { ViewerProfileForm } from './components/ViwerProfileForm/ViewerProfileForm';
 
-export const UserProfile = () => {
+export const ViewerProfile = () => {
   return (
     <>
       <div className={s.user_profile_scene}>
         <div className="container">
           <div className={s.form_wrapper}>
             <Text>Edit Profile</Text>
-            <UserProfileForm />
+            <ViewerProfileForm />
           </div>
         </div>
       </div>
