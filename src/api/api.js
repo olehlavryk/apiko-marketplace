@@ -25,6 +25,7 @@ export const Auth = {
       password,
     });
   },
+
   register({ email, password, fullName }) {
     return axios.post('/api/auth/register', {
       email,
@@ -37,6 +38,15 @@ export const Auth = {
 export const Account = {
   getUser() {
     return axios.get('/api/account');
+  },
+
+  updateViewer({ fullName, avatar, phone, location }) {
+    return axios.put('/api/account', {
+      fullName,
+      avatar,
+      phone,
+      location,
+    });
   },
 };
 

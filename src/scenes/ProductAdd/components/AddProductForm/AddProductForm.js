@@ -27,18 +27,19 @@ export const AddProductForm = () => {
   const handleUploadImages = async () => {
     const photosLinks = [];
     const data = new FormData();
-    const _url =
-      'https://api.cloudinary.com/v1_1/olehlavryk/image/upload';
 
     for (const image of selectedFiles) {
       try {
         data.append('file', image);
         data.append('upload_preset', 'apiko_upload');
 
-        const res = await fetch(_url, {
-          method: 'POST',
-          body: data,
-        });
+        const res = await fetch(
+          'https://api.cloudinary.com/v1_1/olehlavryk/image/upload',
+          {
+            method: 'POST',
+            body: data,
+          },
+        );
 
         const file = await res.json();
         photosLinks.push(file.secure_url);
@@ -77,11 +78,6 @@ export const AddProductForm = () => {
       .max(60, 'We prefer insecure system, try a shorter password.'),
     price: Yup.string().required('Location is a required field'),
   });
-
-  const chooseImages = (e) => {
-    e.preventDefault();
-    fileInputRef.current.click();
-  };
 
   return (
     <Formik
