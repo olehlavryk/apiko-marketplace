@@ -55,6 +55,10 @@ export const Products = {
     return axios.get('/api/products/latest');
   },
 
+  fetchSaved() {
+    return axios.get('/api/products/saved');
+  },
+
   getById(id) {
     return axios.get(`/api/products/${id}`);
   },

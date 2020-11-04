@@ -6,7 +6,7 @@ import { Icon } from '../Icons/Icon';
 import { routes } from '../../scenes/routes';
 import './../../App.css';
 import { useStore } from '../../stores/createStore';
-import { ViewerLogo } from '../Viewer/ViwerLogo/ViewerLogo';
+import { ViewerLogo } from '../Viewer/ViewerLogo/ViewerLogo';
 
 const UserInfo = observer(() => {
   const store = useStore();
@@ -111,7 +111,7 @@ export const Header = observer(() => {
           )}
 
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <Link to={routes.home}>
+          <Link to={routes.productsSaved}>
             <Icon
               name={store.auth.isLoggedIn ? 'like_white' : 'like'}
             />

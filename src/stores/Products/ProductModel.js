@@ -35,11 +35,14 @@ export const ProductModel = types
       }
     }),
 
-    removeProductSave: flow(function* productSave() {
+    removeProductSave: flow(function* removeProductSave() {
       store.saved = !store.saved;
 
       try {
         yield Api.Products.removeSaveById(+store.id);
+
+        // update savedProducts store
+        yield getRoot(store).productsSaved.fetch.run();
       } catch (e) {
         console.log(e);
         store.likeRevert();

@@ -4,6 +4,7 @@ import { AuthStore } from './Auth/AuthStore';
 import { ViewerStore } from './ViewerStore';
 import { LatestProductsStore } from './Products/LatestProductsStore';
 import { OwnProducts } from './Products/OwnProductsStore';
+import { ProductsSavedStore } from './Products/ProductsSavedStore';
 import { EntitiesStore } from './EntitesStore';
 import { useHistory } from 'react-router';
 import { routes } from '../scenes/routes';
@@ -14,6 +15,7 @@ export const RootStore = types
     viewer: types.optional(ViewerStore, {}),
     latestProducts: types.optional(LatestProductsStore, {}),
     ownProducts: types.optional(OwnProducts, {}),
+    productsSaved: types.optional(ProductsSavedStore, {}),
     entities: types.optional(EntitiesStore, {}),
   })
   .actions((store) => ({
@@ -24,7 +26,7 @@ export const RootStore = types
 
         if (!token) {
           store.auth.setIsLoggedIn(false);
-          applySnapshot(store,{});
+          applySnapshot(store, {});
           return;
         }
 
@@ -36,7 +38,7 @@ export const RootStore = types
         store.auth.setIsLoggedIn(true);
       } catch (err) {
         store.auth.setIsLoggedIn(false);
-        applySnapshot(store,{});
+        applySnapshot(store, {});
       }
     },
   }));

@@ -1,4 +1,4 @@
-import { getRoot, types } from 'mobx-state-tree';
+import { types } from 'mobx-state-tree';
 import { UserModel } from './Users/UserModel';
 import { asyncModel } from 'src/stores/utils';
 import Api from 'src/api/index';
@@ -15,13 +15,13 @@ export const ViewerStore = types
   }));
 
 function updateViewerFlow({ fullName, avatar, phone, location }) {
-  return async (flow) => {
+  return async (flow, store, Root) => {
     const res = await Api.Account.updateViewer({
       fullName,
       avatar,
       phone,
       location,
     });
-    getRoot(flow).viewer.setViewer(res.data);
+    Root.viewer.setViewer(res.data);
   };
 }

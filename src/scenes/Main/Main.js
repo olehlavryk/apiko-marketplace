@@ -7,6 +7,7 @@ import { Home } from '../Home/Home';
 import { ProductView } from '../ProductView/ProductView';
 import { User } from '../User/User';
 import { ProductAdd } from '../ProductAdd/ProductAdd';
+import { ProductsSaved } from '../ProductsSaved/ProductsSaved';
 import { ViewerProfile } from '../ViewerProfile/ViewerProfile';
 
 export const Main = () => {
@@ -15,6 +16,11 @@ export const Main = () => {
       <Header />
       <Switch>
         <Route exact path={routes.home} component={Home} />
+        <ProtectedRoute
+          exact
+          path={routes.productsSaved}
+          component={ProductsSaved}
+        />
         <Route path={routes.product} component={ProductView} />
         <Route path={routes.user} component={User} />
         <ProtectedRoute

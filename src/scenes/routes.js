@@ -18,6 +18,7 @@ export const routes = {
   register: '/auth/register',
   restore: '/auth/restore',
   viewerProfile: '/viewer/profile',
+  productsSaved: '/products/saved',
   product: '/products/:productId',
   productAdd: '/product/add',
   user: '/users/:userId/products',

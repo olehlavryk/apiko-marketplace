@@ -35,7 +35,6 @@ export const Product = observer((props) => {
         />
       );
     }
-
   } catch (err) {
     productPreview = (
       <img
@@ -46,7 +45,6 @@ export const Product = observer((props) => {
       />
     );
   }
-
   return (
     <div className={s.product}>
       <NavLink
@@ -63,11 +61,18 @@ export const Product = observer((props) => {
         </Link>
         <div className={s.product_price}>${item.price}</div>
         <div className={s.product_like_wrap}>
-
           {item.saved ? (
-            <Icon name="like_green" onClick={item.removeProductSave} className="product_like" />
+            <Icon
+              name="like_green"
+              onClick={item.removeProductSave}
+              className="product_like"
+            />
           ) : (
-            <Icon name="like" onClick={item.productSave} className="product_like" />
+            <Icon
+              name="like"
+              onClick={item.productSave}
+              className="product_like"
+            />
           )}
         </div>
       </div>
