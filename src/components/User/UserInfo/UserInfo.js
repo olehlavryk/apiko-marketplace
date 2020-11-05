@@ -69,6 +69,11 @@ export const UserInfo = ({ product }) => {
         className={s.modal}
         overlayClassName={s.modal_overlay}
       >
+        <Icon
+          name="close"
+          className={s.close_window}
+          onClick={handleClose}
+        />
         <div className={s.modal_title}> Contact seller </div>
         <div className={s.about_seller_box}>
           <div className={s.seller_avatar}>
