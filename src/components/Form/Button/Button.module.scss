@@ -19,4 +19,8 @@ button {
   &:disabled {
     cursor: not-allowed;
   }
+
+  &:focus {
+    outline-color: #349A89;
+  }
 }

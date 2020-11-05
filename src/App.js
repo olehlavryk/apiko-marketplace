@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Modal from 'react-modal';
 import Router from './scenes/routes';
 import { createStore, Provider } from './stores/createStore';
-
 const store = createStore();
 
 function App() {
@@ -25,5 +25,7 @@ function App() {
     </main>
   );
 }
+
+Modal.setAppElement('#modalRoot');
 
 export default App;

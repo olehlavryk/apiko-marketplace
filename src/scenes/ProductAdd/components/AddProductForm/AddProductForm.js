@@ -15,7 +15,6 @@ import { Icon } from '../../../../components/Icons/Icon';
 export const AddProductForm = () => {
   const store = useStore();
   const history = useHistory();
-  const fileInputRef = useRef();
 
   const [state, setState] = useState({
     error: false,
@@ -67,7 +66,7 @@ export const AddProductForm = () => {
     <img key={key} src={item} alt="Product preview" />
   ));
 
-  const LoginSchema = Yup.object().shape({
+  const AddProductSchema = Yup.object().shape({
     title: Yup.string()
       .required('Title is a required field')
       .min(2, 'Seems a bit short...')
@@ -88,7 +87,7 @@ export const AddProductForm = () => {
         price: 0,
         photos: selectedFiles,
       }}
-      validationSchema={LoginSchema}
+      validationSchema={AddProductSchema}
       onSubmit={async (values, { resetForm, setFieldValue }) => {
         const { title, location, description, price } = values;
 

@@ -1,33 +1,41 @@
-import React from 'react';
-import { NavLink, generatePath, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+
+import Modal from 'react-modal';
+import { generatePath, Link } from 'react-router-dom';
 import s from './UserInfo.module.scss';
 import { Icon } from '../../Icons/Icon';
-import {
-  getImagePlaceHolderPath,
-  setImagePlaceHolder,
-} from '../../../stores/utils';
 import { routes } from '../../../scenes/routes';
+import { PersonLogo } from 'src/components/PersonLogo/PersonLogo';
+import { SellerContactForm } from './components/SellerContactForm';
 
 export const UserInfo = ({ product }) => {
   const { avatar, fullName, location, id } = product.owner;
+
+  const [isVisible, setVisible] = useState(false);
+
+  const handleChatWithSeller = () => {
+    setVisible(true);
+  };
+
+  const handleClose = () => {
+    setVisible(false);
+  };
 
   return (
     <>
       <div className={s.seller_info}>
         <div className={s.seller_avatar}>
-          {/* todo if avatar is empty set placeholder */}
-          {avatar ? (
-            <img
-              src={avatar}
-              alt={fullName}
-              onError={(e) => setImagePlaceHolder(e, '40x40')}
+          <Link
+            to={generatePath(routes.user, {
+              userId: id,
+            })}
+          >
+            <PersonLogo
+              size="72"
+              avatar={avatar}
+              fullName={fullName}
             />
-          ) : (
-            <img
-              src={getImagePlaceHolderPath('40x40')}
-              alt={fullName}
-            />
-          )}
+          </Link>
         </div>
         <div className={s.seller_name}>
           <Link
@@ -39,14 +47,51 @@ export const UserInfo = ({ product }) => {
           </Link>
         </div>
         {location && (
-          <div className={s.seller_location}>{location}</div>
+          <div className={s.seller_location}> {location} </div>
         )}
       </div>
-      <button className={s.seller_chat_btn}>Chat with seller</button>
+      <button
+        className={s.seller_chat_btn}
+        onClick={handleChatWithSeller}
+      >
+        Chat with seller
+      </button>
       <button className={s.add_to_favorite_btn}>
         <Icon name="like" size="16px" />
-        <span>Add to favorite</span>
+        {/* todo change btn view depends on isSaved or not */}
+        <span> Add to favorite </span>
       </button>
+
+      {/* Modal window */}
+      <Modal
+        isOpen={isVisible}
+        onRequestClose={handleClose}
+        className={s.modal}
+        overlayClassName={s.modal_overlay}
+      >
+        <div className={s.modal_title}> Contact seller </div>
+        <div className={s.about_seller_box}>
+          <div className={s.seller_avatar}>
+            <Link
+              to={generatePath(routes.user, {
+                userId: id,
+              })}
+            >
+              <PersonLogo
+                size="72"
+                avatar={avatar}
+                fullName={fullName}
+              />
+            </Link>
+          </div>
+          <div className={s.seller_info_text}>
+            <div className={s.seller_name}> {fullName} </div>
+            <div className={s.seller_location}> {location} </div>
+          </div>
+        </div>
+        {/* Seller contact form */}
+        <SellerContactForm />
+      </Modal>
     </>
   );
 };

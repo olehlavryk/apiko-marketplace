@@ -38,3 +38,9 @@ ul {
   }
 
 }
+
+/* Common rules for form */
+
+* {
+  outline-color: #349A89;
+}
