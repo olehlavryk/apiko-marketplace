@@ -91,3 +91,11 @@ export const Users = {
     return axios.get(`/api/users/${id}`);
   },
 };
+
+export const Chats = {
+  createChat(id, message) {
+    return axios.post(`/api/products/${id}/createChat`, {
+      message,
+    });
+  },
+};

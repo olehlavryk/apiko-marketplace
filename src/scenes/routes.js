@@ -22,6 +22,7 @@ export const routes = {
   product: '/products/:productId',
   productAdd: '/product/add',
   user: '/users/:userId/products',
+  inbox: '/inbox/:chatId',
 };
 
 export const PrivateRoute = observer(

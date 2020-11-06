@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
+import { useHistory, generatePath } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { Button } from 'src/components/Form/Button/Button';
 import { TextArea } from 'src/components/Form/TextArea/TextArea';
 import { Label } from 'src/components/Form/Label/Label';
 import s from './SellerContactForm.module.scss';
+import { routes } from 'src/scenes/routes';
 
-export const SellerContactForm = () => {
+export const SellerContactForm = ({ product }) => {
+  const history = useHistory();
+
   const [state, setState] = useState({
     error: false,
     errorMessage: null,
   });
+
+  const [messageText, setMessageText] = useState(
+    'For example: Iron man suit',
+  );
 
   const formValidationSchema = Yup.object().shape({
     message: Yup.string()
@@ -22,11 +30,20 @@ export const SellerContactForm = () => {
   return (
     <Formik
       initialValues={{
-        message: '',
+        message: messageText,
       }}
       validationSchema={formValidationSchema}
       onSubmit={async (values, { resetForm, setFieldValue }) => {
-        // const { title, location, description, price } = values;
+        try {
+          const { message } = values;
+
+          const chatId = await product.createChat.run(message);
+          //setVisible(false);
+
+          history.push(generatePath(routes.inbox, { chatId }));
+        } catch (err) {
+          console.log(err);
+        }
         // const photos = await handleUploadImages();
         // console.log(photos);
         // try {
@@ -86,7 +103,9 @@ export const SellerContactForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               rows={10}
+              defaultValue={messageText}
             />
+
             {errors.message && touched.message ? (
               <span className={s.errors_small}>
                 {errors.message && touched.message && errors.message}

@@ -95,7 +95,7 @@ export const UserInfo = ({ product }) => {
           </div>
         </div>
         {/* Seller contact form */}
-        <SellerContactForm />
+        <SellerContactForm {...{ product }} />
       </Modal>
     </>
   );

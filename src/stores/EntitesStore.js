@@ -15,7 +15,9 @@ export const EntitiesStore = types
         Object.keys(collectionEntities).forEach((id) => {
           const value = collectionEntities[id];
 
-          store[collectionName].add(id, value);
+          if (store[collectionName] !== undefined) {
+            store[collectionName].add(id, value);
+          }
         });
       });
     },
