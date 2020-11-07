@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import { useHistory } from 'react-router-dom';
+import { useStore } from 'src/stores/createStore';
 import Modal from 'react-modal';
 import { generatePath, Link } from 'react-router-dom';
 import s from './UserInfo.module.scss';
@@ -10,11 +11,18 @@ import { SellerContactForm } from './components/SellerContactForm';
 import { AddToFavoriteBtn } from 'src/components/AddToFavoriteBtn/AddToFavoriteBtn';
 
 export const UserInfo = ({ product }) => {
-  const { avatar, fullName, location, id } = product.owner;
+  const store = useStore();
+  const history = useHistory();
 
+  const { avatar, fullName, location, id } = product.owner;
   const [isVisible, setVisible] = useState(false);
 
   const handleChatWithSeller = () => {
+    if (!store.auth.isLoggedIn) {
+      history.push(routes.login);
+      return;
+    }
+
     setVisible(true);
   };
 

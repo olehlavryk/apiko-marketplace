@@ -44,39 +44,6 @@ export const SellerContactForm = ({ product }) => {
         } catch (err) {
           console.log(err);
         }
-        // const photos = await handleUploadImages();
-        // console.log(photos);
-        // try {
-        //   await store.entities.products.addProduct.run({
-        //     title,
-        //     location,
-        //     description,
-        //     price,
-        //     photos,
-        //   });
-        //   history.push(routes.home);
-        // } catch (err) {
-        //   if (err.response.status === 404) {
-        //     setState({
-        //       error: true,
-        //       errorMessage:
-        //         'Wrong login or password! Please try again!',
-        //     });
-        //   } else {
-        //     setState({
-        //       error: true,
-        //       errorMessage:
-        //         'Something goes wrong! Please try again.',
-        //     });
-        //   }
-        //   resetForm({
-        //     title: '',
-        //     location: '',
-        //     description: '',
-        //     price: 0,
-        //     photos: [],
-        //   });
-        // }
       }}
     >
       {({
