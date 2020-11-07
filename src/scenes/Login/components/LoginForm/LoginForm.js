@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { Link, useHistory } from 'react-router-dom';
+import { generatePath, Link, useHistory } from 'react-router-dom';
 import { useStore } from 'src/stores/createStore';
 import { Label } from 'src/components/Form/Label/Label';
 import { TextInput } from 'src/components/Form/TextInput/TextInput';
@@ -41,7 +41,7 @@ export const LoginForm = () => {
           await store.auth.login.run({ email, password });
 
           store.auth.setIsLoggedIn(true);
-          history.push(routes.home);
+          history.push(generatePath(routes.home));
         } catch (err) {
           if (err.response.status === 404) {
             setState({

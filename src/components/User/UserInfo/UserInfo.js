@@ -7,6 +7,7 @@ import { Icon } from '../../Icons/Icon';
 import { routes } from '../../../scenes/routes';
 import { PersonLogo } from 'src/components/PersonLogo/PersonLogo';
 import { SellerContactForm } from './components/SellerContactForm';
+import { AddToFavoriteBtn } from 'src/components/AddToFavoriteBtn/AddToFavoriteBtn';
 
 export const UserInfo = ({ product }) => {
   const { avatar, fullName, location, id } = product.owner;
@@ -56,12 +57,7 @@ export const UserInfo = ({ product }) => {
       >
         Chat with seller
       </button>
-      <button className={s.add_to_favorite_btn}>
-        <Icon name="like" size="16px" />
-        {/* todo change btn view depends on isSaved or not */}
-        <span> Add to favorite </span>
-      </button>
-
+      <AddToFavoriteBtn product={product} />
       {/* Modal window */}
       <Modal
         isOpen={isVisible}
