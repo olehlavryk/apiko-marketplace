@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/apiko-marketplace/static/css/main.477e7b4c.chunk.css",
-    "main.js": "/apiko-marketplace/static/js/main.d10a5426.chunk.js",
-    "main.js.map": "/apiko-marketplace/static/js/main.d10a5426.chunk.js.map",
+    "main.js": "/apiko-marketplace/static/js/main.5921a99f.chunk.js",
+    "main.js.map": "/apiko-marketplace/static/js/main.5921a99f.chunk.js.map",
     "runtime-main.js": "/apiko-marketplace/static/js/runtime-main.91b5e772.js",
     "runtime-main.js.map": "/apiko-marketplace/static/js/runtime-main.91b5e772.js.map",
     "static/js/2.d316a9e5.chunk.js": "/apiko-marketplace/static/js/2.d316a9e5.chunk.js",
     "static/js/2.d316a9e5.chunk.js.map": "/apiko-marketplace/static/js/2.d316a9e5.chunk.js.map",
     "index.html": "/apiko-marketplace/index.html",
-    "precache-manifest.b81878b62b73c4cde0f9dc0af4a8ac2c.js": "/apiko-marketplace/precache-manifest.b81878b62b73c4cde0f9dc0af4a8ac2c.js",
+    "precache-manifest.67f0d8fa431f162115490e3f1772fc5a.js": "/apiko-marketplace/precache-manifest.67f0d8fa431f162115490e3f1772fc5a.js",
     "service-worker.js": "/apiko-marketplace/service-worker.js",
     "static/css/main.477e7b4c.chunk.css.map": "/apiko-marketplace/static/css/main.477e7b4c.chunk.css.map",
     "static/js/2.d316a9e5.chunk.js.LICENSE.txt": "/apiko-marketplace/static/js/2.d316a9e5.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.91b5e772.js",
     "static/js/2.d316a9e5.chunk.js",
     "static/css/main.477e7b4c.chunk.css",
-    "static/js/main.d10a5426.chunk.js"
+    "static/js/main.5921a99f.chunk.js"
   ]
 }
