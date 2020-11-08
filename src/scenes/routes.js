@@ -11,21 +11,18 @@ import { Footer } from '../components/Footer/Footer';
 import { useStore } from '../stores/createStore';
 import { Main } from './Main/Main';
 
-
 export const routes = {
-  home = '/apiko-marketplace',
-
-  home: `${home}/`,
-  auth: `${home}/auth`,
-  login: `${home}/auth/login`,
-  register: `${home}/auth/register`,
-  restore: `${home}/auth/restore`,
-  viewerProfile: `${home}/viewer/profile`,
-  productsSaved: `${home}/products/saved`,
-  product: `${home}/products/:productId`,
-  productAdd: `${home}/product/add`,
-  user: `${home}/users/:userId/products`,
-  inbox: `${home}/inbox/:chatId`,
+  home: `/apiko-marketplace/`,
+  auth: `/apiko-marketplace/auth`,
+  login: `/apiko-marketplace/auth/login`,
+  register: `/apiko-marketplace/auth/register`,
+  restore: `/apiko-marketplace/auth/restore`,
+  viewerProfile: `/apiko-marketplace/viewer/profile`,
+  productsSaved: `/apiko-marketplace/products/saved`,
+  product: `/apiko-marketplace/products/:productId`,
+  productAdd: `/apiko-marketplace/product/add`,
+  user: `/apiko-marketplace/users/:userId/products`,
+  inbox: `/apiko-marketplace/inbox/:chatId`,
 };
 
 export const PrivateRoute = observer(
