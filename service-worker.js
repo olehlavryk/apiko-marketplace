@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/apiko-marketplace/precache-manifest.40d3e24a17fcb341b966f45aa014c88e.js"
+  "/apiko-marketplace/precache-manifest.4823de5326c7cd693f11820d23e32d10.js"
 );
 
 self.addEventListener('message', (event) => {
