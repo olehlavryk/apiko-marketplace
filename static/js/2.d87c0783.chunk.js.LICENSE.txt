@@ -4,6 +4,24 @@ object-assign
 @license MIT
 */
 
+/*!
+  Copyright (c) 2015 Jed Watson.
+  Based on code that is Copyright 2013-2015, Facebook, Inc.
+  All rights reserved.
+*/
+
+/*!
+ * Adapted from jQuery UI core
+ *
+ * http://jqueryui.com
+ *
+ * Copyright 2014 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/category/ui-core/
+ */
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -34,7 +52,7 @@ See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
 ***************************************************************************** */
 
-/** @license React v0.18.0
+/** @license React v0.19.1
  * scheduler.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -43,7 +61,7 @@ and limitations under the License.
  * LICENSE file in the root directory of this source tree.
  */
 
-/** @license React v0.19.1
+/** @license React v0.20.1
  * scheduler.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
