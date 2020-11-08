@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/apiko-marketplace/static/css/main.477e7b4c.chunk.css",
-    "main.js": "/apiko-marketplace/static/js/main.71bdb00e.chunk.js",
-    "main.js.map": "/apiko-marketplace/static/js/main.71bdb00e.chunk.js.map",
+    "main.js": "/apiko-marketplace/static/js/main.d10a5426.chunk.js",
+    "main.js.map": "/apiko-marketplace/static/js/main.d10a5426.chunk.js.map",
     "runtime-main.js": "/apiko-marketplace/static/js/runtime-main.91b5e772.js",
     "runtime-main.js.map": "/apiko-marketplace/static/js/runtime-main.91b5e772.js.map",
-    "static/js/2.d87c0783.chunk.js": "/apiko-marketplace/static/js/2.d87c0783.chunk.js",
-    "static/js/2.d87c0783.chunk.js.map": "/apiko-marketplace/static/js/2.d87c0783.chunk.js.map",
+    "static/js/2.d316a9e5.chunk.js": "/apiko-marketplace/static/js/2.d316a9e5.chunk.js",
+    "static/js/2.d316a9e5.chunk.js.map": "/apiko-marketplace/static/js/2.d316a9e5.chunk.js.map",
     "index.html": "/apiko-marketplace/index.html",
-    "precache-manifest.4823de5326c7cd693f11820d23e32d10.js": "/apiko-marketplace/precache-manifest.4823de5326c7cd693f11820d23e32d10.js",
+    "precache-manifest.b81878b62b73c4cde0f9dc0af4a8ac2c.js": "/apiko-marketplace/precache-manifest.b81878b62b73c4cde0f9dc0af4a8ac2c.js",
     "service-worker.js": "/apiko-marketplace/service-worker.js",
     "static/css/main.477e7b4c.chunk.css.map": "/apiko-marketplace/static/css/main.477e7b4c.chunk.css.map",
-    "static/js/2.d87c0783.chunk.js.LICENSE.txt": "/apiko-marketplace/static/js/2.d87c0783.chunk.js.LICENSE.txt"
+    "static/js/2.d316a9e5.chunk.js.LICENSE.txt": "/apiko-marketplace/static/js/2.d316a9e5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.91b5e772.js",
-    "static/js/2.d87c0783.chunk.js",
+    "static/js/2.d316a9e5.chunk.js",
     "static/css/main.477e7b4c.chunk.css",
-    "static/js/main.71bdb00e.chunk.js"
+    "static/js/main.d10a5426.chunk.js"
   ]
 }

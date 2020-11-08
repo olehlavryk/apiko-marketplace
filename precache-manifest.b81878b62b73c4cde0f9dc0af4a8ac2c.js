@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3b07239d19d6ff353af0db1d5e92631c",
+    "revision": "f2359a06e0186a582ac7cfd51fb3a4bd",
     "url": "/apiko-marketplace/index.html"
   },
   {
-    "revision": "699c9ec8e1b4fbe7efdb",
+    "revision": "da4171cbae59f8535fb8",
     "url": "/apiko-marketplace/static/css/main.477e7b4c.chunk.css"
   },
   {
-    "revision": "9a085fe6912d20edb886",
-    "url": "/apiko-marketplace/static/js/2.d87c0783.chunk.js"
+    "revision": "dff08db5cfa408f06520",
+    "url": "/apiko-marketplace/static/js/2.d316a9e5.chunk.js"
   },
   {
     "revision": "2064c1114e9d9c17d7e1d5a6e22e0c8d",
-    "url": "/apiko-marketplace/static/js/2.d87c0783.chunk.js.LICENSE.txt"
+    "url": "/apiko-marketplace/static/js/2.d316a9e5.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "699c9ec8e1b4fbe7efdb",
-    "url": "/apiko-marketplace/static/js/main.71bdb00e.chunk.js"
+    "revision": "da4171cbae59f8535fb8",
+    "url": "/apiko-marketplace/static/js/main.d10a5426.chunk.js"
   },
   {
     "revision": "305d8a88af3dceabb858",
