@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://olehlavryk.github.io/';
+axios.defaults.baseURL =
+  'https://olehlavryk.github.io/apiko-marketplace/';
 
 export const Auth = {
   _token: null,
