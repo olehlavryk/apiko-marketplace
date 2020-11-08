@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+axios.defaults.baseURL = 'https://olehlavryk.github.io/';
+
 export const Auth = {
   _token: null,
 
