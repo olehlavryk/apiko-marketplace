@@ -1,6 +1,5 @@
 {
-  "homepage": "http://olehlavryk.github.io/apiko-marketplace",
-  "name": "l.apiko-marketplace.loc",
+  "name": "apiko-marketplace",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
