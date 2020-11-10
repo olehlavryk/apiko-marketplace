@@ -20,7 +20,10 @@
     "mobx-react-devtools": "^6.1.1",
     "mobx-state-tree": "^3.17.2",
     "normalizr": "^3.6.1",
-    "react-file-reader": "^1.1.4"
+    "react-file-reader": "^1.1.4",
+    "react-loading-skeleton": "^2.1.1",
+    "react-modal": "^3.11.2",
+    "react-tabs": "^3.1.1"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -67,12 +70,8 @@
     "heroku-proxy": "^2.1.1",
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
-
-    "react-loading-skeleton": "^2.1.1",
-    "react-modal": "^3.11.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-select": "^3.1.0",
-    "react-tabs": "^3.1.1"
+    "react-select": "^3.1.0"
   }
 }
