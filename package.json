@@ -11,7 +11,8 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3",
     "axios": "^0.20.0",
-    "http-proxy-middleware": "^1.0.6"
+    "http-proxy-middleware": "^1.0.6",
+    "node-sass": "^4.14.1"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -61,7 +62,6 @@
     "mobx-react": "^6.3.1",
     "mobx-react-devtools": "^6.1.1",
     "mobx-state-tree": "^3.17.2",
-    "node-sass": "^4.14.1",
     "normalizr": "^3.6.1",
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
