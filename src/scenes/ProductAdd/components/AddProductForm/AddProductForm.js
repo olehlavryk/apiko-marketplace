@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ReactFileReader from 'react-file-reader';
 import * as Yup from 'yup';

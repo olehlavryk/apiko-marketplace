@@ -106,7 +106,6 @@ export const iconsConfig = {
       fill={color}
       {...props}
       viewBox="0 0 17 15"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -135,7 +134,6 @@ export const iconsConfig = {
       fill={color}
       {...props}
       viewBox="0 0 12 17"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

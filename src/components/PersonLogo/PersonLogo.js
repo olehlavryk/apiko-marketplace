@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import s from './PersonLogo.module.scss';
 
 export const PersonLogo = ({ size, avatar, fullName }) => {

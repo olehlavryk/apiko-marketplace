@@ -1,10 +1,4 @@
-import {
-  getRoot,
-  types,
-  getParent,
-  flow,
-  getSnapshot,
-} from 'mobx-state-tree';
+import { getRoot, types, flow, getSnapshot } from 'mobx-state-tree';
 import { UserModel } from '../Users/UserModel';
 import Api from '../../api';
 import { asyncModel } from '../utils';

@@ -1,4 +1,4 @@
-import { getParent, types } from 'mobx-state-tree';
+import { types } from 'mobx-state-tree';
 import Api from 'src/api';
 import { ProductModel } from './ProductModel';
 import { asyncModel } from '../utils';

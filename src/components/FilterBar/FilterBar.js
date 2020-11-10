@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import s from './FilterBar.module.scss';
 
 export const FilterBar = () => {
@@ -7,10 +7,6 @@ export const FilterBar = () => {
     priceFrom: undefined,
     priceTo: undefined,
   });
-
-  function handleOnChange() {
-    console.log('1');
-  }
 
   return (
     <div className={s.filter_bar}>

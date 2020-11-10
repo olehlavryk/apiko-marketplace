@@ -6,8 +6,6 @@ import { LatestProductsStore } from './Products/LatestProductsStore';
 import { OwnProducts } from './Products/OwnProductsStore';
 import { ProductsSavedStore } from './Products/ProductsSavedStore';
 import { EntitiesStore } from './EntitesStore';
-import { useHistory } from 'react-router';
-import { routes } from '../scenes/routes';
 
 export const RootStore = types
   .model('RootStore', {

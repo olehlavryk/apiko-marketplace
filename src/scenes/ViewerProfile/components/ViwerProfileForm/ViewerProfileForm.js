@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import s from './ViewerProfileForm.module.scss';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { Link, useHistory } from 'react-router-dom';
 import { useStore } from 'src/stores/createStore';
 import { Label } from 'src/components/Form/Label/Label';
 import { TextInput } from 'src/components/Form/TextInput/TextInput';
@@ -12,7 +11,6 @@ import { observer } from 'mobx-react';
 
 export const ViewerProfileForm = observer(() => {
   const store = useStore();
-  const history = useHistory();
 
   const [state, setState] = useState({
     error: false,
@@ -51,7 +49,8 @@ export const ViewerProfileForm = observer(() => {
     return fileUrl;
   };
 
-  const phoneRegExp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+  const phoneRegExp =
+    '/^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/im';
 
   const ProfileSchema = Yup.object().shape({
     fullName: Yup.string()
