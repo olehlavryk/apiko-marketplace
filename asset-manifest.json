@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/apiko-marketplace/static/css/main.477e7b4c.chunk.css",
-    "main.js": "/apiko-marketplace/static/js/main.5921a99f.chunk.js",
-    "main.js.map": "/apiko-marketplace/static/js/main.5921a99f.chunk.js.map",
+    "main.css": "/apiko-marketplace/static/css/main.ad996c15.chunk.css",
+    "main.js": "/apiko-marketplace/static/js/main.2b90cc46.chunk.js",
+    "main.js.map": "/apiko-marketplace/static/js/main.2b90cc46.chunk.js.map",
     "runtime-main.js": "/apiko-marketplace/static/js/runtime-main.91b5e772.js",
     "runtime-main.js.map": "/apiko-marketplace/static/js/runtime-main.91b5e772.js.map",
-    "static/js/2.d316a9e5.chunk.js": "/apiko-marketplace/static/js/2.d316a9e5.chunk.js",
-    "static/js/2.d316a9e5.chunk.js.map": "/apiko-marketplace/static/js/2.d316a9e5.chunk.js.map",
+    "static/js/2.0f275797.chunk.js": "/apiko-marketplace/static/js/2.0f275797.chunk.js",
+    "static/js/2.0f275797.chunk.js.map": "/apiko-marketplace/static/js/2.0f275797.chunk.js.map",
     "index.html": "/apiko-marketplace/index.html",
-    "precache-manifest.67f0d8fa431f162115490e3f1772fc5a.js": "/apiko-marketplace/precache-manifest.67f0d8fa431f162115490e3f1772fc5a.js",
+    "precache-manifest.68bdaf64a9950341a9ddc300d8a1e7b0.js": "/apiko-marketplace/precache-manifest.68bdaf64a9950341a9ddc300d8a1e7b0.js",
     "service-worker.js": "/apiko-marketplace/service-worker.js",
-    "static/css/main.477e7b4c.chunk.css.map": "/apiko-marketplace/static/css/main.477e7b4c.chunk.css.map",
-    "static/js/2.d316a9e5.chunk.js.LICENSE.txt": "/apiko-marketplace/static/js/2.d316a9e5.chunk.js.LICENSE.txt"
+    "static/css/main.ad996c15.chunk.css.map": "/apiko-marketplace/static/css/main.ad996c15.chunk.css.map",
+    "static/js/2.0f275797.chunk.js.LICENSE.txt": "/apiko-marketplace/static/js/2.0f275797.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.91b5e772.js",
-    "static/js/2.d316a9e5.chunk.js",
-    "static/css/main.477e7b4c.chunk.css",
-    "static/js/main.5921a99f.chunk.js"
+    "static/js/2.0f275797.chunk.js",
+    "static/css/main.ad996c15.chunk.css",
+    "static/js/main.2b90cc46.chunk.js"
   ]
 }
