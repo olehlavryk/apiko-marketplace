@@ -10,7 +10,7 @@ export const UserStatistics = observer(({ user }) => {
   const store = useStore();
   useEffect(() => {
     store.ownProducts.fetch.run(user.id);
-  }, []);
+  }, [store.ownProducts.fetch, user.id]);
 
   // Loading
   if (store.ownProducts.fetch.isLoading) {
@@ -87,7 +87,9 @@ export const UserStatistics = observer(({ user }) => {
     );
   } else {
     ownProducts.push(
-      <div key={1} className={s.no_products}>There are no products yet!</div>,
+      <div key={1} className={s.no_products}>
+        There are no products yet!
+      </div>,
     );
   }
 

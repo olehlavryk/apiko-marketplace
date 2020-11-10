@@ -22,7 +22,7 @@ export const ProductView = observer(() => {
     if (!product || !product.owner) {
       collection.getProduct.run(productId);
     }
-  }, []);
+  }, [collection.getProduct, product, productId]);
 
   // Loading or not found.
   if (collection.getProduct.isLoading) {

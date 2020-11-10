@@ -15,7 +15,7 @@ export const User = observer(() => {
     if (!user) {
       collection.getUser.run(userId);
     }
-  }, []);
+  }, [collection.getUser, user, userId]);
 
   if (collection.getUser.isLoading) {
     return <div>loading...</div>;

@@ -9,7 +9,7 @@ export const ProductsSaved = observer(() => {
   const store = useStore();
   useEffect(() => {
     store.productsSaved.fetch.run();
-  }, []);
+  }, [store.productsSaved.fetch]);
 
   // Loading
   if (store.productsSaved.fetch.isLoading) {

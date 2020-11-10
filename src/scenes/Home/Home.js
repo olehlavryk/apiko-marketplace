@@ -10,7 +10,7 @@ export const Home = observer(() => {
   const store = useStore();
   useEffect(() => {
     store.latestProducts.fetchLatest.run();
-  }, []);
+  }, [store.latestProducts.fetchLatest]);
 
   // Loading
   if (store.latestProducts.fetchLatest.isLoading) {

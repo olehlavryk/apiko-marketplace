@@ -11,14 +11,12 @@ import { routes } from 'src/scenes/routes';
 export const SellerContactForm = ({ product }) => {
   const history = useHistory();
 
-  const [state, setState] = useState({
+  const [state] = useState({
     error: false,
     errorMessage: null,
   });
 
-  const [messageText, setMessageText] = useState(
-    'For example: Iron man suit',
-  );
+  const [messageText] = useState('For example: Iron man suit');
 
   const formValidationSchema = Yup.object().shape({
     message: Yup.string()
