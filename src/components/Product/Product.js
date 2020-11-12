@@ -60,19 +60,16 @@ export const Product = observer((props) => {
           {item.firstLetterToUpper}
         </Link>
         <div className={s.product_price}>${item.price}</div>
-        <div className={s.product_like_wrap}>
+        <div
+          className={s.product_like_wrap}
+          onClick={
+            item.saved ? item.removeProductSave : item.productSave
+          }
+        >
           {item.saved ? (
-            <Icon
-              name="like_green"
-              onClick={item.removeProductSave}
-              className="product_like"
-            />
+            <Icon name="like_green" className="product_like" />
           ) : (
-            <Icon
-              name="like"
-              onClick={item.productSave}
-              className="product_like"
-            />
+            <Icon name="like" className="product_like" />
           )}
         </div>
       </div>
